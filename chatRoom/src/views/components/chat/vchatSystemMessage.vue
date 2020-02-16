@@ -19,7 +19,10 @@
                                     <span class="signature">{{v.signature}}</span>
                                 </p>
                             </div>
-                            <div class="info">
+                            <!-- <div class="info">
+                                附加消息：<span>{{v.mes}}</span>
+                            </div> -->
+                             <div class="info">
                                 附加消息：<span>{{v.mes}}</span>
                             </div>
                             <div class="footer" v-if="v.status === '0' ">
