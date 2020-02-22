@@ -97,6 +97,7 @@ const apiList = require('./controller/apiList');
 const onconnection = (socket) => {
     console.log('启动了Socket.io');
 
+    // 后端 接受请求后执行加入操作，记录每个房间加入的成员，以及回信告知指定房间已上线成员
     socket.on('join', (val) => {
         // if (OnlineUser[val.name]) {
         //     console.log('yijiaru', val.name);

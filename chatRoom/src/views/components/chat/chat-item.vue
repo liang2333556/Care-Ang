@@ -122,11 +122,13 @@
         },
         sockets:{
             org(r) {
+                // 只有本房间的消息才展示
                 if (r.roomid === this.currSation.id) {
                     this.chatList.push(Object.assign({}, r, {type: 'org'}));
                 }
             },
             mes(r) {
+                // 只有本房间的消息才展示
                 if (r.roomid === this.currSation.id) {
                     this.chatList.push(Object.assign({}, r, {type: 'other'}));
                     this.$socket.emit('setReadStatus', {roomid: r.roomid, name: this.user.name});
@@ -168,6 +170,7 @@
                         }
                         this.$socket.emit('setReadStatus', {roomid: v.id, name: this.user.name});
                         this.$store.commit('setUnRead', {roomid: v.id, clear: true});
+                        // 前端 获取指定房间的历史消息
                         this.$socket.emit('getHistoryMessages', {roomid: v.id, offset: 1, limit: 100});
                     }
                 },

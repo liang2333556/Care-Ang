@@ -93,10 +93,13 @@
             }
         },
         methods: {
+            // 加入房间
+            // 加入会话列表中的房间，会话列表在好友申请成功或者加群成功时会自动添加。但是你也可以手动移除或添加，移除后将不会再收到被移除会话的消息（类似于屏蔽）。
             joinRoom() {
                 if (!this.user.name) {
                     return ;
                 }
+                // 前端 发起加入房间的请求
                 this.conversationsList.forEach(v => {
                     let val = {
                         name: this.user.name,
