@@ -7,6 +7,9 @@ import messages from './messages';
 import jokes from './jokes';
 import news from './news';
 import todo from './todo';
+import caring from './caring';
+import wishing from './wishing';
+import record from './record';
 
 export default {
     ...user,
@@ -17,5 +20,8 @@ export default {
     ...jokes,
     ...news,
     ...messages,
-    ...todo
+    ...todo,
+    ...caring,
+    ...wishing,
+    ...record
 }

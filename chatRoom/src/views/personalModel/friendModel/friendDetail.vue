@@ -29,12 +29,15 @@
                 <p>
                     所在地：{{friendInfo.province.name + (friendInfo.city.name === '市辖区' ? '' : ' - ' + friendInfo.city.name) + ' - ' + friendInfo.town.name}}
                 </p>
+                <p>
+                    相识天数：{{friendTime}}天
+                </p>
             </div>
             <div class="detail-item" v-if="friendInfo.code === user.code" @click="toPhoto">
                 <span>照片墙</span>
                 <p>
                     <v-icon name="enter" color="#d5d5d5"></v-icon>
-                </p>
+                </p>个性签名
             </div>
             <div class="detail-button" v-if="friendInfo.code !== user.code">
                 <button @click="apply" class="vchat-full-button minor" v-if="!myFriendFlag">加为好友</button>
@@ -56,15 +59,17 @@
         data() {
             return {
                 IMG_URL: process.env.IMG_URL,
-                friendInfo: {cover: [], province: {}, city: {}, town: {}}, // user详情
+                friendInfo: {cover: [], province: {}, city: {}, town: {} ,birthday:{}}, // user详情
                 showFriendQr: false, // 二维码开关
-                myFriendFlag: false // 是否为我的好友
+                myFriendFlag: false, // 是否为我的好友
+                friendTime: 0
             }
         },
         components: {
             vApheader
         },
         computed: {
+
             ...mapState(['user'])
         },
         methods: {
@@ -77,6 +82,7 @@
                 this.$router.push({name: 'applyFriend', params: {id: this.$route.params.id}, query: {}});
             },
             remove() {
+
             },
             getUserInfo() {
                 let params = {
@@ -101,11 +107,19 @@
                         this.myFriendFlag = r.data;
                     }
                 })
-            }
+            },
+          getFirendTime() {
+              var that = this
+              let today = new Date();
+              let todayTime = Math.ceil(today.getTime()/1000);
+              let friendTime = Math.ceil(new Date(this.$route.params.friendTime)/1000);
+              that.friendTime = Math.ceil((todayTime-friendTime)/86400);
+          }
         },
         created() {
             this.getUserInfo();
             this.checkMyfriends();
+            this.getFirendTime();
         }
     }
 </script>

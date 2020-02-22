@@ -49,6 +49,10 @@
                 <el-input v-model="personForm.email" placeholder="电子邮箱">
                 </el-input>
             </el-form-item>
+            <el-form-item label="生日" >
+              <el-date-picker v-model="personForm.birthday" type="date" :value-format="formatDate" placeholder="选择日期">
+              </el-date-picker>
+            </el-form-item>
             <el-form-item label="个性签名" prop="signature">
                 <el-input v-model="personForm.signature" placeholder="签名（不超过100位字符）" type="textarea" aotusize resize="none">
                 </el-input>
@@ -126,7 +130,8 @@
                     phone: '',
                     province: '',
                     city: '',
-                    town: ''
+                    town: '',
+                    birthday: ''
                 },
                 showCrop: false, // 裁剪框开关
                 cropUrl: '', // 裁剪图片地址
@@ -142,10 +147,14 @@
                     ],
                     signature: [
                         { validator: validateSignature, trigger: 'blur' }
-                    ]
+                    ]/*,
+                    birthday: [
+                        { type: 'date',  message: '请选择日期', trigger: 'change' }
+                    ]*/
                 },
                 cities: [],
-                towns: []
+                towns: [],
+              formatDate:"yyyy-MM-dd HH:mm:ss"
             }
         },
         computed: {
@@ -224,7 +233,7 @@
                                     message: '保存成功',
                                     type: 'success'
                                 });
-                                this.$store.commit('setUser', {nickname: this.personForm.nickname, signature: this.personForm.signature, province: this.personForm.province, city: this.personForm.city, town: this.personForm.town});
+                                this.$store.commit('setUser', {nickname: this.personForm.nickname, signature: this.personForm.signature, province: this.personForm.province, city: this.personForm.city, town: this.personForm.town, birthday:this.personForm.birthday});
                             } else {
                                 this.$message({
                                     message: '保存失败',

@@ -3,11 +3,9 @@ const apiModel = require("../model/apiModel");
 
 // 0成功 -1失败
 const getUser = (req,res) => {
-    apiModel.getUser((r) => { // 获取用户
-        res.json({
-            code : 0,
-            data : r
-        })
+    let params = req.body;
+    apiModel.getUser({...params}, (r) => { // 添加爱心
+        res.json(r);
     })
 };
 

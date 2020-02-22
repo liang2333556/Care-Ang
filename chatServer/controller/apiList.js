@@ -4,6 +4,9 @@ let messages = require('./messages');
 let friendly = require('./friendly');
 let expression = require('./expression');
 let todo = require('./todo');
+let caring = require('./caring');
+let wishing = require('./wishing');
+let record = require('./record');
 
 module.exports = {
     ...users,
@@ -11,5 +14,8 @@ module.exports = {
     ...messages,
     ...friendly,
     ...expression,
-    ...todo
+    ...todo,
+    ...caring,
+    ...wishing,
+    ...record
 };

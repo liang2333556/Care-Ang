@@ -27,17 +27,25 @@
                     <span>{{friendList.length}}</span>
                 </h3>
                 <ul class="vchat-linkman-list">
-                    <li v-for="v in friendList" :key="v._id" @click="goFriendDetail(v.id)" @contextmenu="contextmenuClick($event, v)">
-                        <a href="javascript:;">
+                    <li v-for="v in friendList" :key="v._id" style="cursor: auto;">
+                        <a href="javascript:;" @click="goFriendDetail(v.id,v.createDate)" @contextmenu="contextmenuClick($event, v)">
                             <img :src="IMG_URL + v.photo" alt="">
                         </a>
-                        <div>
-                            <p>
-                                <span class="vchat-line1" :title="v.nickname">{{v.nickname}}</span>
-                            </p>
-                            <p>
-                                <span :title="v.signature" class="vchat-line1">{{v.signature}}</span>
-                            </p>
+                        <div style="display: inline-block;">
+                            <div>
+                              <p>
+                              <span class="vchat-line1" :title="v.nickname" style="vertical-align: center;float:left;color: #1c1c1c;">
+                                {{v.nickname}}
+                              </span>
+                              </p>
+                              <p style="color: red">{{v.birthdayRemind}}</p>
+                            </div>
+                            <div>
+                                <span :title="v.signature" class="vchat-line1" style="float:left;">{{v.signature}}</span>
+                            </div>
+                        </div>
+                        <div style="display: inline-block;width: 40px;height: 40px;cursor: pointer;" @click="clickCaring(v)">
+                          <img v-if="v.caring === '1'" src="../../../../static/font/aixin.png" style="width: 32px;height: 32px;padding-top: 4px"/>
                         </div>
                     </li>
                 </ul>
@@ -85,8 +93,8 @@
             handleCommand(command) {
                 this.$router.push(command);
             },
-            goFriendDetail(id) {
-                this.$router.push({name: 'friendDetail', params: {id: id}});
+            goFriendDetail(id,createDate) {
+                this.$router.push({name: 'friendDetail', params: {id: id,friendTime:createDate}});
             },
             setShowList(v) {
                 if (this.showList.indexOf(v) > -1) {
@@ -94,6 +102,7 @@
                 } else {
                     this.showList.push(v);
                 }
+
             },
             upVisible(f) {
                 this.visible = f;
@@ -160,11 +169,53 @@
                 let params = {
                     userId: this.user.id
                 };
+                var date1 = new Date();
+                var nowDate = date1.getMonth() +'-'+ date1.getDate()
                 api.findMyfriends(params).then(r => {
                     if (r.code === 0) {
-                        this.friendList = r.data;
+                      r.data.forEach( info => {
+                        info.birthdayRemind = ''
+                        if (info.birthday !== '') {
+                          var date2 = new Date(info.birthday)
+                          var frindsDate = date2.getMonth() +'-'+ date2.getDate()
+                          if (nowDate === frindsDate) {
+                            info.birthdayRemind = '[ 好友生日 ]'
+                          }
+                        }
+                      })
+                      var params = {
+                        userM: this.user.id
+                      }
+                      api.getCaring(params).then( res => {
+                        if(res.code === 0) {
+                          r.data.forEach(r1 => {
+                            console.log(r1.id)
+                            res.data.forEach(r2 => {
+                              console.log(r2.userY)
+                              if(r1.id === r2.userY) {
+                                r1.caring = r2.caring
+                              }
+                            })
+                          })
+                          this.friendList = r.data;
+                        }
+                      })
                     }
                 })
+            },
+            clickCaring(v){
+              var params = {
+                userM:this.user.id,
+                userY:v.id,
+                caring:v.caring === '1' ? '0' : '1'
+              }
+              v.caring = params.caring
+              api.upCaring(params).then(res => {
+                if(res.code === 0) {
+                }else{
+                    console.log("upCaring error 500")
+                }
+              })
             }
         },
         mounted() {

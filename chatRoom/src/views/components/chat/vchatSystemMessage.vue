@@ -8,7 +8,7 @@
                     <el-popover
                             placement="left"
                             width="400"
-                            v-model="v.visible">
+                            ref="v.visible">
                         <div class="Validate-mes">
                             <div class="header">
                                 <a class="vchat-photo">
@@ -139,15 +139,39 @@
                 })
             },
             agree(v) {
-                v.userYphoto = this.user.photo;
-                v.userYname = this.user.nickname;
-                this.$socket.emit('agreeValidate', v);
-                this.InfoList.forEach(m => { // 更新同一申请人的所有相同请求
-                    if (m.userM === v.userM && m.type === "validate" && (v.state === 'friend' || v.state === 'group')) {
-                        m.status = '1';
-                        m.visible = false
-                    }
-                });
+              var params1 = {
+                userM: v.userM,
+                userY: v.userY,
+                caring: '0'
+              }
+              var params2 = {
+                userM: v.userY,
+                userY: v.userM,
+                caring: '0'
+              }
+              api.addCaring(params1).then(r => {
+                if (r.code === 0) {
+                } else {
+                  console.log("addCaring error 500")
+                }
+              })
+              api.addCaring(params2).then(r => {
+                if (r.code === 0) {
+                } else {
+                  console.log("addCaring error 500")
+                }
+              })
+
+              v.userYphoto = this.user.photo;
+              v.userYname = this.user.nickname;
+              this.$socket.emit('agreeValidate', v);
+              this.InfoList.forEach(m => { // 更新同一申请人的所有相同请求
+                  if (m.userM === v.userM && m.type === "validate" && (v.state === 'friend' || v.state === 'group')) {
+                      m.status = '1';
+                      m.visible = false
+                  }
+              });
+
             },
             refuse(v) {
                 v.userYphoto = this.user.photo;

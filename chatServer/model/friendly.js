@@ -15,12 +15,12 @@ let friendlySchema = new db.Schema({
 friendlySchema.statics = {
     findFriendByUserM:function(userId, callback){ // 通过userM查找userY信息
         return this
-            .find({userM: userId}).populate({path: 'userY', select: 'signature photo nickname'})  // 关联查询
+            .find({userM: userId}).populate({path: 'userY', select: 'signature photo nickname birthday'})  // 关联查询
             .exec(callback)
     },
     findFriendByUserY:function(userId, callback){ // 通过userM查找userY信息
         return this
-            .find({userY: userId}).populate({path: 'userM', select: 'signature photo nickname'})  // 关联查询
+            .find({userY: userId}).populate({path: 'userM', select: 'signature photo nickname birthday'})  // 关联查询
             .exec(callback)
     }
 };
@@ -39,7 +39,8 @@ const findMyfriends = (params, callback) => { // 查找我的好友
                     photo: v.userY.photo,
                     signature: v.userY.signature,
                     id: v.userY._id,
-                    roomid: params.userId + '-' + v.userY._id
+                    roomid: params.userId + '-' + v.userY._id,
+                    birthday:v.userY.birthday
                 })
             });
             userY.forEach(v => {
@@ -49,7 +50,8 @@ const findMyfriends = (params, callback) => { // 查找我的好友
                     photo: v.userM.photo,
                     signature: v.userM.signature,
                     id: v.userM._id,
-                    roomid: v.userM._id + '-' + params.userId
+                    roomid: v.userM._id + '-' + params.userId,
+                    birthday:v.userM.birthday
                 })
             });
             callback({code: 0, data: data})
