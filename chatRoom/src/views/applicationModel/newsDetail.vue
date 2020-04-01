@@ -2,7 +2,7 @@
     <div class="vchat-newsDetail vchat-application">
         <div class="news-iframe">
             <iframe :src="detailSrc" id="newsIframe" v-if="detailSrc"></iframe>
-            <p v-else>页面出错了！</p>
+            <p v-else>Page error！</p>
         </div>
     </div>
 </template>

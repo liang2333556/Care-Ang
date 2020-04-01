@@ -7,6 +7,10 @@
     "create": "node ./init.js"
   },
   "dependencies": {
+    "@google/maps": "^0.4.6",
+    "cors": "^2.8.4",
+    "dark-sky": "^1.1.2",
+    "express-rate-limit": "^2.11.0",
     "body-parser": "~1.18.2",
     "compression": "^1.7.3",
     "cookie-parser": "~1.4.3",

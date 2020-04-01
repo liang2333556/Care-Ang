@@ -25,12 +25,12 @@
             return {
                 setingList: [
                     {
-                        name: '个人资料',
+                        name: 'Personal information',
                         link: '/mySetting/means',
                         class: 'icon-gerenziliao3'
                     },
                     {
-                        name: '主题设置',
+                        name: 'Topic setting',
                         link: '/mySetting/theme',
                         class: 'icon-zhuti'
                     }

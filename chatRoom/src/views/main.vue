@@ -30,19 +30,27 @@
             return {
                 nav: [
                     {
-                        name: '主页',
+                        name: 'Home Page',
                         class: 'icon-daohangshouye',
                         activeClass: 'icon-group_fill',
-                        id: 3,
+                        id: 1,
                         link: 'personalMain'
                     },
                     {
-                        name: '应用空间',
+                        name: 'Relax yourself here',
                         class: 'icon-yingyong',
                         activeClass: 'icon-people_fill',
                         id: 2,
                         link: 'application'
-                    }
+                    },
+                    {
+                        name: 'Search Weather for your friends',
+                        class: 'icon-qing',
+                        activeClass: 'icon-people_fill',
+                        id: 3,
+                        link: 'searchweather'
+                    },
+
                 ]
             };
         },
@@ -64,13 +72,13 @@
         sockets:{
             connect: function (val) {
                 console.log(this.$socket.id);
-                console.log('连接成功');
+                console.log('Connect successfully');
             },
             customEmit: function (val) {
-                console.log('连接失败');
+                console.log('Fail to connect');
             },
             joined(OnlineUser) {
-                console.log('加入了', OnlineUser);
+                console.log('Join', OnlineUser);
                 this.$store.commit('setOnlineUser', OnlineUser)
             },
             leaved(OnlineUser) {
@@ -120,7 +128,8 @@
 
 <style lang="scss" scoped>
 .vchat-main{
-    width: 100%;
+  color:red;
+  width: 100%;
     height: 100%;
     .vchat-content {
         width: 100%;

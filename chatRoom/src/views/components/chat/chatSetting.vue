@@ -1,27 +1,27 @@
 <template>
     <div class="vchat-chatSetting">
-        <h3>聊天设置</h3>
+        <h3>Chatting setting</h3>
         <v-icon class="el-icon-circle-close-outline deClose" @clickIcon="$emit('clickIcon')" color="#323232" :size="24" cursor="pointer"></v-icon>
-        <h5>聊天壁纸</h5>
+        <h5>Chatting background</h5>
         <ul class="bg">
             <li class="bg-li" v-for="(v, i) in bgList" :key="i" v-bgInmage="IMGURL + v.url">
                 <p @click="setChatBg(v)">{{v.name}}</p>
                 <v-icon class="el-icon-circle-check-outline" color="rgb(80, 243, 0)" v-if="user.wallpaper.split(',')[0] === v.url"></v-icon>
             </li>
             <li class="upload-btn">
-                <span class="vchat-button-mini minor">上传</span>
+                <span class="vchat-button-mini minor">Upload</span>
                 <input type="file" @change="fileChange" ref="wallpaperFile" accept="image/png, image/jpeg, image/gif, image/jpg">
             </li>
         </ul>
 
-        <h5>背景透明度</h5>
+        <h5>Backgroud transparency</h5>
         <div class="aphSlider-container">
             <el-slider v-model="aphSlider" :format-tooltip="formatTooltip" tooltip-class="aphTooltip" @change="Sliderchange"></el-slider>
-            <span class="vchat-button-mini minor" @click="saveBgopa">保存</span>
+            <span class="vchat-button-mini minor" @click="saveBgopa">Save</span>
         </div>
-        <h5>文字颜色</h5>
+        <h5>Word color</h5>
         <p class="isColor-container">
-            <span>当前颜色:</span>
+            <span>Current color:</span>
             <span class="isColor" v-bgColor="user.chatColor">{{user.chatColor}}</span>
         </p>
         <div class="color-container">
@@ -74,7 +74,7 @@
         computed: {
             ...mapState(['user']),
             bgList() {
-                return [{name: '远方', url: '/img/wallpaper.jpg', id: 1}, {name: '昨日青空', url: '/img/0055.jpg', id: 2}, {name: '希望', url: '/img/xiang.jpg', id: 3}, {name: '自定义', url: this.user.wallpaper && this.user.wallpaper.split(',')[1] || false, id: 4}];
+                return [{name: 'Future', url: '/img/wallpaper.jpg', id: 1}, {name: 'Sky', url: '/img/0055.jpg', id: 2}, {name: 'Hope', url: '/img/xiang.jpg', id: 3}, {name: '自定义', url: this.user.wallpaper && this.user.wallpaper.split(',')[1] || false, id: 4}];
             }
         },
         methods: {
@@ -98,12 +98,12 @@
                     if (r.code === 0) {
                         this.$store.commit('setUser', params);
                         this.$message({
-                            message: '设置成功',
+                            message: 'Set successfully',
                             type: 'success'
                         });
                     } else {
                         this.$message({
-                            message: '设置失败',
+                            message: 'Fail to set',
                             type: 'warning'
                         })
                     }
@@ -115,7 +115,7 @@
                 }
                 if (!v.url) {
                     this.$message({
-                        message: '请先上传自定义壁纸',
+                        message: 'Please upload your picture',
                         type: 'warning'
                     });
                     return;
@@ -132,7 +132,7 @@
                 let f = this.$refs['wallpaperFile'].files[0];
                 const isLt1M = f.size / 1024 / 1024 < 1;
                 if (!isLt1M) {
-                    this.$message.error('图片大小不能超过 1MB!');
+                    this.$message.error('The size of picture can not beyond 1MB!');
                     this.$refs['wallpaperFile'].value = '';
                     return;
                 }
@@ -150,19 +150,19 @@
                             if (res.code === 0) {
                                 this.$store.commit('setUser', { wallpaper: r.data + ',' + r.data });
                                 this.$message({
-                                    message: '上传成功',
+                                    message: 'Upload successfully',
                                     type: 'success'
                                 })
                             } else {
                                 this.$message({
-                                    message: '上传失败',
+                                    message: 'Fail to upload',
                                     type: 'warning'
                                 })
                             }
                         })
                     } else {
                         this.$message({
-                            message: '上传失败',
+                            message: 'Fail to upload',
                             type: 'warning'
                         })
                     }

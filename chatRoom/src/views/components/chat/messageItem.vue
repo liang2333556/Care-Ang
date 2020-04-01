@@ -12,15 +12,15 @@
                 <img v-lazy="IMG_URL + v.emoji" alt="">
             </p>
             <p v-if="v.style === 'img'" class="image">
-                <img v-lazy="IMG_URL + v.emoji" alt="" @dblclick="$emit('lookPhoto', v.emoji)" title="双击查看原图">
+                <img v-lazy="IMG_URL + v.emoji" alt="" @dblclick="$emit('lookPhoto', v.emoji)" title="Double click the picture">
             </p>
             <div v-if="v.style === 'file'" class="file">
                 <img src="../../../assets/img/file.png" alt="">
                 <div>
                     <p :title="v.mes">{{v.mes.lastIndexOf('.') > 12 ? v.mes.slice(0, 12) + '...' + v.mes.slice(v.mes.lastIndexOf('.')) : v.mes}}</p>
-                    <a :href="v.emoji" download v-if="type === 'other'">下载</a>
+                    <a :href="v.emoji" download v-if="type === 'other'">Download</a>
                     <p v-if="type === 'mine'">
-                        发送成功
+                        Send successfully
                         <v-icon class="el-icon-circle-check-outline" color="#67C23A"></v-icon>
                     </p>
                 </div>

@@ -1,7 +1,8 @@
 <template>
-    <div class="vchat-todo">
+    <div class="vchat-todo"  :style="background1">
         <vHeader :isMainHeader="false"></vHeader>
-        <full-calendar :events="fcEvents" locale="zh-cn" lang="zh" @dayClick="dayClick">
+
+        <full-calendar  :events="fcEvents"  @dayClick="dayClick">
             <template slot="fc-event-card" slot-scope="p">
                 <el-popover
                         placement="bottom"
@@ -9,13 +10,13 @@
                         width="200"
                         trigger="click">
                         <p class="todoInfo">
-                            时间：{{formatTime(p.event.start)}} 至 {{formatTime(p.event.end)}}
+                            Time：{{formatTime(p.event.start)}} to {{formatTime(p.event.end)}}
                         </p>
                         <p class="todoInfo">
-                            地点：{{p.event.address}}
+                            Location：{{p.event.address}}
                         </p>
                         <p class="todoInfo">
-                            内容：{{p.event.content}}
+                            Content：{{p.event.content}}
                         </p>
                         <p class="todoTitle-box" slot="reference">
                             <span class="vchat-line1 todoTitle">{{p.event.title}}</span>
@@ -39,6 +40,11 @@
     export default{
         data() {
             return {
+                background1: {
+                    backgroundImage: 'url(' + require('../assets/img/b4.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
                 fcEvents: [],
                 dialogVisible: false,
                 chooseDate: '',
@@ -85,18 +91,18 @@
                 this.dialogVisible = true;
             },
             delTodo(id) {
-                this.$confirm('确认删除该日程记录吗？', '确认信息')
+                this.$confirm('Are you sure to delete the schedule？', 'Confirm')
                     .then(() => {
                         api.delTodo({'_id': id}).then(r => {
                             if (r.code === 0) {
                                 this.fcEvents = this.fcEvents.filter(v => id !== v['_id']);
                                 this.$message({
-                                    message: '删除成功',
+                                    message: 'Delete successfully',
                                     type: 'success'
                                 });
                             } else {
                                 this.$message({
-                                    message: '删除失败',
+                                    message: 'Fail to delete',
                                     type: 'warning'
                                 });
                             }
@@ -113,6 +119,7 @@
 </script>
 
 <style lang="scss" scoped>
+
     .todoTitle-box{
         display: flex;
         justify-content: space-between;
@@ -129,7 +136,7 @@
     .todoInfo{
         font-size: 12px;
         color: #323232;
-        font-family: "Times New Roman", Times, serif;
+        font-family: word;
         margin-bottom: 5px;
     }
 </style>

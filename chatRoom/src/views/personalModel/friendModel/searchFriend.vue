@@ -1,8 +1,8 @@
 <template>
     <div class="vchat-searchFriend">
-        <v-apheader title="添加好友" back="/main/personalMain/friendly/own"></v-apheader>
+        <v-apheader title="Add friends" back="/main/personalMain/friendly/own"></v-apheader>
         <div class="vchat-search friend-search">
-            <el-select v-model="type" placeholder="请选择搜索方式" @change="huntFriends">
+            <el-select v-model="type" placeholder="Searching ways" @change="huntFriends">
                 <el-option
                         v-for="item in searchOptions"
                         :key="item.value"
@@ -12,7 +12,7 @@
                 </el-option>
             </el-select>
             <el-input
-                    placeholder="搜索内容"
+                    placeholder="Searching content"
                     v-model="huntKey"
                     clearable
             >
@@ -37,7 +37,7 @@
             </ul>
             <v-nodata v-show="!friendList.length && !loadingSearch">
                 <p class="vchat-no-have">
-                    没有搜索到想要的!
+                  There is nothing to get!
                 </p>
             </v-nodata>
         </div>
@@ -57,11 +57,11 @@
                 searchOptions: [
                     {
                         value: '2',
-                        label: '昵称'
+                        label: 'Username'
                     },
                     {
                         value: '1',
-                        label: 'Vchat号'
+                        label: 'User number'
                     }
                 ],
                 type: '2'

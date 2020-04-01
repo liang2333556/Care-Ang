@@ -1,6 +1,6 @@
 <template>
     <div class="vchat-friendly">
-        <div class="vchat-friendly-container">
+        <div class="vchat-friendly-container" :style="backgroundDiv">
             <transition :name="transitonName">
                 <router-view v-if="isShow"></router-view>
             </transition>
@@ -12,6 +12,11 @@
     export default{
         data() {
             return {
+                backgroundDiv: {
+                    backgroundImage: 'url(' + require('../../assets/img/b3.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
                 isShow: true,
                 transitonName: 'moveIn' // 过渡动画名
             }

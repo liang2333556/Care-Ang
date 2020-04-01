@@ -3,7 +3,7 @@
         <ul v-if="InfoList.length">
             <template v-for="v in InfoList">
                 <li v-if="v.type === 'validate'" :key="v['_id']">
-                    <span class="vchat-line1 info">{{v.state === 'friend' ? '验证消息：' + v.nickname + '申请加您为好友' : '验证消息：' + v.nickname + '申请加入' + v.groupName}}</span>
+                    <span class="vchat-line1 info">{{v.state === 'friend' ? 'Validation message：' + v.nickname + 'ask to become friend with you' : 'Validation message：' + v.nickname + 'ask to join' + v.groupName}}</span>
                     <span class="time">{{v.time}}</span>
                     <el-popover
                             placement="left"
@@ -19,33 +19,33 @@
                                     <span class="signature">{{v.signature}}</span>
                                 </p>
                             </div>
-                            <!-- <div class="info">
+                            <div class="info">
                                 附加消息：<span>{{v.mes}}</span>
-                            </div> -->
+                            </div>
                              <div class="info">
-                                附加消息：<span>{{v.mes}}</span>
+                                Added message：<span>{{v.mes}}</span>
                             </div>
                             <div class="footer" v-if="v.status === '0' ">
-                                <button class="vchat-button-mini info" @click="refuse(v)">拒绝</button>
-                                <button class="vchat-button-mini" @click="agree(v)">同意</button>
+                                <button class="vchat-button-mini info" @click="refuse(v)">Refuse</button>
+                                <button class="vchat-button-mini" @click="agree(v)">Agree</button>
                             </div>
                             <div class="footer" v-else>
-                                <span class="status">{{v.status === '1' ? '已同意' : '已拒绝'}}</span>
+                                <span class="status">{{v.status === '1' ? 'Agree' : 'Refuse'}}</span>
                             </div>
                         </div>
-                        <span slot="reference" @click="v.visible = !v.visible" class="look" v-if="v.status === '0' ">查看</span>
-                        <span slot="reference" v-else>{{v.status === '1' ? '已同意' : '已拒绝'}}</span>
+                        <span slot="reference" @click="v.visible = !v.visible" class="look" v-if="v.status === '0' ">check</span>
+                        <span slot="reference" v-else>{{v.status === '1' ? 'Agree' : 'Refuse'}}</span>
                     </el-popover>
                     <el-popover
                             placement="top"
                             width="160"
                             v-model="v.delVisible">
-                        <p>确定删除吗？</p>
+                        <p>Are you sure to delete？</p>
                         <div style="text-align: right; margin: 0">
-                            <el-button size="mini" type="text" @click="v.delVisible = false">取消</el-button>
-                            <el-button type="primary" size="mini" @click="del(v)">确定</el-button>
+                            <el-button size="mini" type="text" @click="v.delVisible = false">Chancel</el-button>
+                            <el-button type="primary" size="mini" @click="del(v)">Submit</el-button>
                         </div>
-                        <span slot="reference" class="del" >删除</span>
+                        <span slot="reference" class="del" >Delete</span>
                     </el-popover>
                 </li>
                 <li v-if="v.type === 'info'" :key="v['_id']">
@@ -57,17 +57,17 @@
                             placement="top"
                             width="160"
                             v-model="v.delVisible">
-                        <p>确定删除吗？</p>
+                        <p>Are you sure to delete？</p>
                         <div style="text-align: right; margin: 0">
-                            <el-button size="mini" type="text" @click="v.delVisible = false">取消</el-button>
-                            <el-button type="primary" size="mini" @click="del(v)">确定</el-button>
+                            <el-button size="mini" type="text" @click="v.delVisible = false">Chancel</el-button>
+                            <el-button type="primary" size="mini" @click="del(v)">Yes</el-button>
                         </div>
-                        <span slot="reference" class="del" >删除</span>
+                        <span slot="reference" class="del" >Delete</span>
                     </el-popover>
                 </li>
             </template>
         </ul>
-        <span v-else>暂无系统消息！</span>
+        <span v-else>System message is null！</span>
     </div>
 </template>
 
@@ -129,13 +129,13 @@
                 api.removeMessage({'_id': v['_id']}).then(r => {
                     if (r.code === 0) {
                         this.$message({
-                            message: '删除成功',
+                            message: 'Delete successfully',
                             type: 'success'
                         });
                         this.InfoList = this.InfoList.filter(m => m._id !== v._id);
                     } else {
                         this.$message({
-                            message: '删除失败',
+                            message: 'Fail to delete',
                             type: 'warning'
                         })
                     }

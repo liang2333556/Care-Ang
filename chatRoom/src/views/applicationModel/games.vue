@@ -6,7 +6,7 @@
                     <img :src="v.url" alt="" class="pd">
                     <div class="pd">
                         <p class="title">{{v.title}}</p>
-                        <p class="enter">进入游戏</p>
+                        <p class="enter">Enter the game</p>
                     </div>
                 </router-link>
             </li>
@@ -27,7 +27,7 @@
                         name: 'h2048'
                     },
                     {
-                        title: '推箱子',
+                        title: 'Sokoban',
                         url: txz,
                         name: 'txz'
                     }

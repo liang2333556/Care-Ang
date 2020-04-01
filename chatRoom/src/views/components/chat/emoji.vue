@@ -26,7 +26,7 @@
                     <v-icon name="jia2" color="rgba(50, 50, 50, 0.64)"></v-icon>
                 </span>
                 <div class="emoji-shop" v-if="activeName === 'shop'">
-                    <h3>表情商城</h3>
+                    <h3>Emoji shop</h3>
                     <ul class="emoji-shop-ul">
                         <li v-for="(m, n) in expressionList" :key="n" @click.stop="emojiDetail(m)">
                             <a>
@@ -44,7 +44,7 @@
                             </li>
                         </ul>
                         <p class="vchat-button addEmoji" v-if="user.emoji.indexOf(currEmojiDetail.code) === -1" @click.stop="addEmoji(currEmojiDetail.code)">添加</p>
-                        <p class="vchat-button info addEmoji" v-else>已添加</p>
+                        <p class="vchat-button info addEmoji" v-else>Added</p>
                     </div>
                 </div>
             </el-tab-pane>

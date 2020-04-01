@@ -1,43 +1,48 @@
 <template>
-    <el-dialog :title="logTitle" :visible.sync="dialogVisible" @close="close">
+  <div class="ca" >
+    <el-dialog :title="logTitle" :visible.sync="dialogVisible"  @close="close" >
         <el-form :model="todoForm" ref="todoForm">
-            <el-form-item label="活动主题" label-width="100px" prop="title" :rules="[{ required: true, message: '主题不能为空'}]">
+            <el-form-item label="Topic" label-width="100px" prop="title" :rules="[{ required: true, message: 'Topic can not be null'}]">
                 <el-input v-model="todoForm.title"></el-input>
             </el-form-item>
-            <el-form-item label="活动内容" label-width="100px" prop="content" :rules="[{ required: true, message: '内容不能为空'}]">
+            <el-form-item label="Content" label-width="100px" prop="content" :rules="[{ required: true, message: 'Content can not be null'}]">
                 <el-input type="textarea" v-model="todoForm.content" resize="none"></el-input>
             </el-form-item>
-            <el-form-item label="活动地点" label-width="100px">
+            <el-form-item label="Location" label-width="100px">
                 <el-input v-model="todoForm.address"></el-input>
             </el-form-item>
-            <el-form-item label="开始时间" label-width="100px">
+            <el-form-item label="Start time" label-width="100px">
                 <el-date-picker
                         v-model="todoForm.start"
                         type="datetime"
-                        placeholder="选择日期时间">
+                        placeholder="Select the date and time">
                 </el-date-picker>
             </el-form-item>
-            <el-form-item label="结束时间" label-width="100px">
+            <el-form-item label="Ending time" label-width="100px">
                 <el-date-picker
                         v-model="todoForm.end"
                         type="datetime"
-                        placeholder="选择日期时间">
+                        placeholder="Select the date and time">
                 </el-date-picker>
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-            <el-button @click="cancel">取 消</el-button>
+            <el-button @click="cancel">Chancel</el-button>
             <el-button type="primary" @click="sure">
                 <v-icon class="el-icon-loading" color="#fff" :size="14" v-if="loading"></v-icon>
-                确 定
+                Submit
             </el-button>
         </div>
     </el-dialog>
+  </div>
 </template>
 
 <script>
     import api from '@/api';
+
+
     export default{
+
         name: 'dialogTodo',
         props: {
             visible: {
@@ -56,7 +61,8 @@
         },
         data() {
             return {
-                logTitle: '新建活动',
+
+                logTitle: 'Create a activity record',
                 todoForm: {
                     title: '',
                     start: '',
@@ -68,6 +74,7 @@
                 loading: false // 保存中
             }
         },
+
         watch: {
             visible(f) {
                 this.dialogVisible = f;
@@ -78,13 +85,13 @@
             },
             info(info) {
                 if (info.title) {
-                    this.logTitle = '编辑活动';
+                    this.logTitle = 'Edit';
                     Object.keys(this.todoForm).forEach(k => {
                         this.todoForm[k] = info[k];
                     });
                     this.todoForm['_id'] = info['_id'];
                 } else {
-                    this.logTitle = '新建活动';
+                    this.logTitle = 'Create';
                 }
             }
         },
@@ -116,12 +123,12 @@
                     if (r.code === 0) {
                         this.$emit('sure', o);
                         this.$message({
-                            message: '新建成功',
+                            message: 'Create successfully',
                             type: 'success'
                         });
                     } else {
                         this.$message({
-                            message: '新建失败',
+                            message: 'Fail to create',
                             type: 'warning'
                         });
                     }
@@ -133,12 +140,12 @@
                     if (r.code === 0) {
                         this.$emit('up', o);
                         this.$message({
-                            message: '修改成功',
+                            message: 'Edit successfully',
                             type: 'success'
                         });
                     } else {
                         this.$message({
-                            message: '修改失败',
+                            message: 'Fail to edit',
                             type: 'warning'
                         });
                     }
@@ -149,5 +156,8 @@
 </script>
 
 <style lang="scss" scoped>
+.ca{
+  font-family:word;
 
+}
 </style>

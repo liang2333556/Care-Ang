@@ -3,10 +3,10 @@
         <div class="game">
             <div id="msg"></div>
             <canvas id="canvas" width="560" height="560"></canvas>
-            <p class="vchat-button" ref="pre">上一关</p>
-            <p class="vchat-button" ref="next">下一关</p>
-            <p class="vchat-button minor" ref="replay">重玩本关</p>
-            <p class="vchat-button info" ref="help">游戏说明</p>
+            <p class="vchat-button" ref="pre">The last section</p>
+            <p class="vchat-button" ref="next">The next section</p>
+            <p class="vchat-button minor" ref="replay">Replay the section</p>
+            <p class="vchat-button info" ref="help">Game introduction</p>
         </div>
     </div>
 </template>
@@ -197,7 +197,7 @@
                     //若果移动完成了进入下一关
                     if (checkFinish())
                     {
-                        alert("恭喜过关！！");
+                        alert("Congratulations!!");
                         NextLevel(1);
                     }
                 }
@@ -293,7 +293,7 @@
                     showhelp = !showhelp;
                     if (showhelp)
                     {
-                        msg.innerHTML = "用键盘上的上、下、左、右键移动小人，把箱子全部推到小球的位置即可过关。箱子只可向前推，不能往后拉，并且小人一次只能推动一个箱子。";
+                        msg.innerHTML = "Use the up, down, left and right buttons on the keyboard to move the villain and push all the boxes to the position of the ball to pass the customs. The box can only be pushed forward, not pulled back, and the villain can only push one box at a time.";
                     }else{
                         showMoveInfo();
                     }

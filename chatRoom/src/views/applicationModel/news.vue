@@ -8,8 +8,8 @@
             <b-scroll :data="newsList">
                 <div class="content">
                     <news-item v-for="(v, i) in newsList" :key="i" :item="v"></news-item>
-                    <el-button type="info" size="medium" :loading="loadMoreFlag" @click="loadMore" class="loadmore" v-if="!nodata">{{loadMoreFlag ? '加载中' : '加载更多'}}</el-button>
-                    <p v-else>没有更多数据了</p>
+                    <el-button type="info" size="medium" :loading="loadMoreFlag" @click="loadMore" class="loadmore" v-if="!nodata">{{loadMoreFlag ? 'Loading...' : 'Load more'}}</el-button>
+                    <p v-else>There is nothing...</p>
                 </div>
             </b-scroll>
         </div>
@@ -27,31 +27,31 @@
                 newsType: [
                     {
                         name: 'BD2A86BEwangning',
-                        label: '电视'
+                        label: 'Channel'
                     },
                     {
                         name: 'BD2A9LEIwangning',
-                        label: '电影'
+                        label: 'Movie'
                     },
                     {
                         name: 'BD2AB5L9wangning',
-                        label: '明星'
+                        label: 'Star'
                     },
                     {
                         name: 'BD2AC4LMwangning',
-                        label: '音乐'
+                        label: 'Music'
                     },
                     {
                         name: 'BA8E6OEOwangning',
-                        label: '体育'
+                        label: 'Sports'
                     },
                     {
                         name: 'BA8EE5GMwangning',
-                        label: '财经'
+                        label: 'Finance'
                     },
                     {
                         name: 'BAI67OGGwangning',
-                        label: '军事'
+                        label: 'Military'
                     }
                 ],
                 loading: false,

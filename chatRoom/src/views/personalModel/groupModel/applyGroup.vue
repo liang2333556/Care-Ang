@@ -1,17 +1,17 @@
 <template>
     <div class="vchat-apply">
-        <v-apheader title="验证信息" back="-1">
-            <!--<router-link :to="{name: 'sendGroupValidate'}">发送</router-link>-->
-            <span @click="send">发送</span>
+        <v-apheader title="authentication information" back="-1">
+<!--            <router-link :to="{name: 'sendGroupValidate'}">发送</router-link>-->
+            <span @click="send">send</span>
         </v-apheader>
         <el-form label-width="80px" class="introduceForm">
-            <el-form-item label="个人介绍">
-                <el-input v-model="introduce" placeholder="请输入不超过90个字" type="textarea" aotusize resize="none" :maxlength="90">
+            <el-form-item label="Personal Introduction">
+                <el-input v-model="introduce" placeholder="Do not enter beyond 90 characters" type="textarea" aotusize resize="none" :maxlength="90">
                 </el-input>
             </el-form-item>
         </el-form>
         <i>{{introduce.length}}/90</i>
-        <span>加群成功以后，个人介绍将展示给群友。</span>
+        <span>After adding group successfully, personal introduction will be shown to group Friends</span>
     </div>
 </template>
 

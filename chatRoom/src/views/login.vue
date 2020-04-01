@@ -1,38 +1,36 @@
 <template>
     <div class="vchat-login" v-bgInmage="bg">
-        <div class="fork-me-on-github">
-            <a href="https://github.com/wuyawei" target="_blank"></a>
-        </div>
+
         <div class="logo" :class="{active: showSign}">
-            <h3 class="title">Hi, Vchat !</h3>
-            <span class="begain" @click="experience">立即体验</span>
+            <h3 class="title">Welcome to CARE!</h3>
+            <span class="begain" @click="experience">Join us now!</span>
         </div>
         <div class="sign" v-if="showSign">
             <div class="title">
-                <span :class="{active: islogin}" @click="choose(true)">登录</span>
-                <span :class="{active: !islogin}" @click="choose(false)">注册</span>
+                <span :class="{active: islogin}" @click="choose(true)">Log in</span>
+                <span :class="{active: !islogin}" @click="choose(false)">Sign up</span>
             </div>
             <el-form ref="signForm" label-width="80px" class="signForm" :rules="signRules" :model="signForm">
                 <el-form-item prop="name">
-                    <el-input v-model="signForm.name" placeholder="账号">
+                    <el-input v-model="signForm.name" placeholder="Username">
                         <i class="iconfont icon-zhanghao" slot="prepend"></i>
                     </el-input>
                 </el-form-item>
 
                 <el-form-item prop="pass">
-                    <el-input v-model="signForm.pass" placeholder="密码" type="password" @keyup.enter.native="enter(islogin)">
+                    <el-input v-model="signForm.pass" placeholder="Password" type="password" @keyup.enter.native="enter(islogin)">
                         <i class="iconfont icon-mima3" slot="prepend"></i>
                     </el-input>
                 </el-form-item>
 
                 <el-form-item prop="repass" v-if="!islogin">
-                    <el-input v-model="signForm.repass" placeholder="确认密码" type="password" @keyup.enter.native="enter(islogin)">
+                    <el-input v-model="signForm.repass" placeholder="Enter password again" type="password" @keyup.enter.native="enter(islogin)">
                         <i class="iconfont icon-mima2" slot="prepend"></i>
                     </el-input>
                 </el-form-item>
 
                 <el-form-item prop="regcode" class="regcode-box">
-                    <el-input v-model="signForm.regcode" placeholder="验证码" @keyup.enter.native="enter(islogin)">
+                    <el-input v-model="signForm.regcode" placeholder="Verification code" @keyup.enter.native="enter(islogin)">
                         <i class="iconfont icon-mima3" slot="prepend"></i>
                     </el-input>
                     <canvas ref="regcode" width="90" height="38"></canvas>
@@ -41,13 +39,9 @@
             </el-form>
             <button @click="enter(islogin)">
                 <v-icon class="el-icon-loading" color="#fff" :size="14" v-if="loading"></v-icon>
-                {{islogin ? '登录' : '注册'}}
+                {{islogin ? 'log in' : 'sign up'}}
             </button>
-            <div class="login-foot" v-if="islogin">
-                <span></span>
-                第三方登录
-                <span></span>
-            </div>
+
         </div>
     </div>
 </template>
@@ -61,11 +55,11 @@
         data() {
             let validateName = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入账号'));
+                    callback(new Error('Please enter the username'));
                 } else {
                     let reg = /^[a-zA-Z0-9_]{2,8}$/;
                     if (!reg.test(value)) {
-                        callback(new Error('请输入2~8位数字字母下划线'));
+                        callback(new Error('Please input 2~8 numbers and letters'));
                         return;
                     }
                     callback();
@@ -73,11 +67,11 @@
             };
             let validatePass = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入密码'));
+                    callback(new Error('Please enter the password'));
                 } else {
                     let reg = /^[a-zA-Z0-9]{6,12}$/;
                     if (!reg.test(value)) {
-                        callback(new Error('请输入6~12位数字字母组合'));
+                        callback(new Error('Please enter the  password of 6-12 digits or letters'));
                         return;
                     }
                     callback();
@@ -85,10 +79,10 @@
             };
             let validateRePass = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入确认密码'));
+                    callback(new Error('Please confirm your password'));
                 } else {
                     if (value !== this.signForm.pass) {
-                        callback(new Error('两次密码输入不一致'));
+                        callback(new Error('The passwords you entered are not the same one'));
                         return;
                     }
                     callback();
@@ -96,11 +90,11 @@
             };
             let validateRegcode = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入验证码'));
+                    callback(new Error('Please enter the verification code'));
                 } else {
                     if (value.toLowerCase() !== this.regcode.toLowerCase()) {
                         this.regCodeClass.drawAgain();
-                        callback(new Error('验证码错误'));
+                        callback(new Error('verification code error'));
                         return;
                     }
                     callback();
@@ -191,13 +185,13 @@
                 this.loading = true;
                 api.login(params).then(r => {
                     if (r.code === 0) {
-                        this.$message.success('登录成功');
+                        this.$message.success('Log in successfully');
                         this.$store.dispatch('getUserInfo', this);
                     } else if (r.code === -1) {
-                        this.$message.error('账号不存在或密码错误');
+                        this.$message.error('The username or password error');
                         this.loading = false;
                     } else {
-                        this.$message.error('登录失败');
+                        this.$message.error('Fail to log in');
                         this.loading = false;
                     }
                 });
@@ -212,16 +206,16 @@
                     if (r.code === 0) {
                         this.$refs['signForm'].resetFields();
                         this.$notify({
-                            title: '注册成功',
-                            message: `您的Vchat号为：${r.data}，您可以凭此登录，祝您生活愉快！`,
+                            title: 'Sign up successfully',
+                            message: `Your user number is：${r.data}，You can use this number to log in,just enjoy your life!`,
                             duration: 5000,
                             type: 'success'
                         });
                         this.islogin = true;
                     } else if (r.code === 1) {
-                        this.$message.error('账号已存在')
+                        this.$message.error('The username existed!')
                     } else {
-                        this.$message.error('注册失败')
+                        this.$message.error('Fail to sign up')
                     }
                     this.loading = false;
                 });
@@ -249,20 +243,7 @@
         overflow: hidden;
         position: relative;
     }
-    .fork-me-on-github{
-        width: 150px;
-        height: 150px;
-        background-image: url("../assets/img/github.png");
-        position: absolute;
-        right: 0;
-        top:0;
-        background-size: contain;
-        a{
-            display: block;
-            width: 150px;
-            height: 150px;
-        }
-    }
+
     .logo{
         margin-top: 15%;
         transform: translateY(0%);

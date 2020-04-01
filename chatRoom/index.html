@@ -3,10 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>vChat</title>
+  <title>Care</title>
+  <meta property="og:title" content="Weather Vue">
+  <meta property="og:description" content="Weather app using Vue.js, Google Maps Geocoding, and Dark Sky.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://weather.kmr.io">
+  <meta property="og:image" content="/static/images/og.jpg">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Weather app using Vue.js, Google Maps Geocoding, and Dark Sky.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/static/vchat.ico" sizes="32x32">
+  <link rel="icon" type="image/png" href="/static/vchat.ico" sizes="16x16">
+  <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#96969f">
+  <meta name="theme-color" content="#96969f">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,500" rel="stylesheet">
   <link rel="shortcut icon" type="image/ico" href="/static/vchat.ico" />
 </head>
 <style>
+  (function (i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r
+                               i[r] = i[r] || function () {
+  (i[r].q = i[r].q || []).push(arguments)
+  }, i[r].l = 1 * new Date()
+  a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]
+  a.async = 1
+  a.src = g
+          m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+
+  ga('create', 'UA-93904346-2', 'auto')
+  ga('send', 'pageview')
   @-webkit-keyframes enter {
     0% {
       opacity: 0;
@@ -251,11 +279,13 @@
       <div class="loading-square"></div>
       <div class="loading-square last"></div>
       <div class="loading-info clear">
-        <span>拼</span>
-        <span>命</span>
-        <span>加</span>
-        <span>载</span>
-        <span>中</span>
+        <span>L</span>
+        <span>o</span>
+        <span>a</span>
+        <span>d</span>
+        <span>i</span>
+        <span>n</span>
+        <span>g</span>
         <span>······</span>
       </div>
     </div>

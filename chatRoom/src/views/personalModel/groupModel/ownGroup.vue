@@ -1,11 +1,11 @@
 <template>
     <div class="vchat-ownGroup vchat-noUser">
-        <v-apheader title="我的群聊">
+        <v-apheader title="My groups">
             <el-dropdown trigger="click" @command="handleCommand">
                 <v-icon cursor="pointer" name="hanbaobao" color="#fff"></v-icon>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item command="/main/personalMain/group/set">新建群聊</el-dropdown-item>
-                    <el-dropdown-item command="/main/personalMain/group/search">查找群聊</el-dropdown-item>
+                    <el-dropdown-item command="/main/personalMain/group/set">Create grouo</el-dropdown-item>
+                    <el-dropdown-item command="/main/personalMain/group/search">Search group</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </v-apheader>
@@ -14,7 +14,7 @@
                 <h3 @click="setShowList('set')">
                     <p>
                         <v-icon name="fanhui" :size="16" color="#b7b6b6" class="list-icon"></v-icon>
-                        <span>我创建的</span>
+                        <span>My groups</span>
                     </p>
                     <span>{{mySetGroups.length}}</span>
                 </h3>
@@ -38,7 +38,7 @@
                 <h3 @click="setShowList('join')">
                     <p>
                         <v-icon name="fanhui" :size="16" color="#b7b6b6" class="list-icon"></v-icon>
-                        <span>我加入的</span>
+                        <span>I join</span>
                     </p>
                     <span>{{myJoinGroups.length}}</span>
                 </h3>
@@ -61,7 +61,7 @@
         </div>
         <v-nodata v-else>
             <p class="vchat-no-have">
-                还没有加入群聊哦，去 <router-link to="/main/personalMain/group/search">查找</router-link>， 去 <router-link to="/main/personalMain/group/set">新建</router-link>。
+               You do not join any group，to <router-link to="/main/personalMain/group/search">search</router-link>， to <router-link to="/main/personalMain/group/set">create</router-link>。
             </p>
         </v-nodata>
         <v-dropdown :command="currGroup" :x="x" :y="y" :visible="visible" @upVisible="upVisible">

@@ -1,6 +1,6 @@
 <template>
     <ul ref="msglist" class="vchat-message">
-        <li style="fontSize: 12px" v-if="chatList.length > 50">更多消息请在聊天记录中查看</li>
+        <li style="fontSize: 12px" v-if="chatList.length > 50">See more information in the message record</li>
         <li :class="[{org: v.type==='org'}]" v-for="(v, i) in chatList" :key="i">
             <template v-if="v.type==='other'">
                 <message-item type="other" @lookPhoto="lookPhoto" :v="v" class="other"></message-item>
@@ -9,7 +9,7 @@
                 <message-item type="mine" @lookPhoto="lookPhoto" :v="v" class="mine"></message-item>
             </template>
             <template v-if="v.type==='org'">
-                系统消息：<span>{{v.nickname}}</span>加入群聊！
+                System message：<span>{{v.nickname}}</span>join group！
             </template>
         </li>
     </ul>

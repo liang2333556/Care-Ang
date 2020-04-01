@@ -1,11 +1,11 @@
 <template>
     <div class="vchat-sendValidate">
-        <v-apheader title="发送成功">
-            <router-link :to="{name: $route.query.name}">关闭</router-link>
+        <v-apheader title="Send successfully">
+            <router-link :to="{name: $route.query.name}">Close</router-link>
         </v-apheader>
         <div class="success">
             <v-icon class="el-icon-success" :size="56" color="#67c23a"></v-icon>
-            <span>请求发送成功，等待审核</span>
+            <span>Request sent successfully, waiting for approval</span>
         </div>
     </div>
 </template>

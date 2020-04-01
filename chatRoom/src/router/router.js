@@ -16,6 +16,11 @@ export default new Router({
             component: _import('main'),
             redirect: 'main/personalMain',
             children: [
+              {
+                path:'searchweather',
+                name:'searchweather',
+                component:_import('searchweather'),
+              },
                 {
                     path: 'personalMain',
                     name: 'personalMain',
@@ -106,7 +111,7 @@ export default new Router({
                     component: _import('application'),
                     redirect: 'application/space',
                     meta: {
-                        title: '应用空间',
+                        title: 'Application',
                         name: 'appSpace'
                     },
                     children: [
@@ -118,27 +123,62 @@ export default new Router({
                         {
                             path: 'jokes',
                             name: 'Jokes',
-                            component: _import('applicationModel/Jokes'),
+                            component: _import('/jokes'),
                             meta: {
-                                title: '侃段子',
+                                title: 'Jokes',
                                 name: 'Jokes'
                             }
                         },
+                      {
+                        path: 'musicplay',
+                        name: 'musicplay',
+                        component: _import('applicationModel/musicplay'),
+                        meta: {
+                          title: 'musicplay',
+                          name: 'musicplay'
+                        }
+                      },    {
+                               path: 'search/:query',
+                               name: 'search',
+                               component:  _import('applicationModel/Search'),
+                        meta: {
+                          title: 'search',
+                          name: 'search'
+                        }
+                      },
                         {
                             path: 'videoGallery',
                             name: 'videoGallery',
                             component: _import('applicationModel/videoGallery'),
                             meta: {
-                                title: '看视频',
+                                title: 'Watch movie',
                                 name: 'videoGallery'
                             }
                         },
+                      {
+                        path: 'Movie',
+                        name: 'Movie',
+                        component: _import('applicationModel/Movie/Movie'),
+                        meta: {
+                          title: 'Movie',
+                          name: 'Movie'
+                        }
+                      },
+                      {
+                        path: '/Pelicula/:id',
+                        name: 'Pelicula',
+                        component: _import('applicationModel/Movie/Pelicula'),
+                        meta: {
+                          title: 'Pelicula',
+                          name: 'Pelicula'
+                        }
+                      },
                         {
                             path: 'games',
                             name: 'games',
                             component: _import('applicationModel/games'),
                             meta: {
-                                title: '玩游戏',
+                                title: 'Play games',
                                 name: 'games'
                             }
                         },
@@ -147,7 +187,7 @@ export default new Router({
                             name: 'news',
                             component: _import('applicationModel/news'),
                             meta: {
-                                title: '看头条',
+                                title: 'Watch news',
                                 name: 'news'
                             }
                         },
@@ -156,7 +196,7 @@ export default new Router({
                             name: 'newsDetail',
                             component: _import('applicationModel/newsDetail'),
                             meta: {
-                                title: '新闻详情',
+                                title: 'News detail',
                                 name: 'newsDetail'
                             }
                         },
@@ -174,12 +214,13 @@ export default new Router({
                             name: 'txz',
                             component: _import('applicationModel/games/txz/txz'),
                             meta: {
-                                title: '推箱子',
+                                title: 'Sokoban',
                                 name: 'txz'
                             }
                         }
                     ]
-                }
+                },
+
             ]
         },
         {

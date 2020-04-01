@@ -9,14 +9,13 @@
             </div>
             <ul class="weather-list">
                 <li>
-                    <p>发布时间：{{LiveWeather.reportTime}}</p>
+                    <p>Release time ：{{LiveWeather.reportTime}}</p>
                     <p class="temperature">
                         <span>{{LiveWeather.temperature}}</span>℃
                         {{LiveWeather.weather}}
                     </p>
                     <weather-icon :type="type"></weather-icon>
-                    <p>空气湿度：{{LiveWeather.humidity}}%</p>
-                    <p>风向：{{LiveWeather.windDirection}}； 风力：{{LiveWeather.windPower || '暂无'}}</p>
+                    <p>Air moderation ：{{LiveWeather.humidity}}%</p>
                 </li>
                 <template v-for="(v, i) in WeatherInfo">
                     <li v-if="i > 0">
@@ -27,7 +26,6 @@
                         </p>
                         <p>{{v.nightTemp}}℃ ~ {{v.dayTemp}}℃</p>
                         <p>{{v.dayWeather}}</p>
-                        <p>风向：{{v.dayWindDir}}</p>
                     </li>
                 </template>
             </ul>
@@ -86,14 +84,14 @@
                 });
             },
             getWeek(k) {
-                return `星期${['一', '二', '三', '四', '五', '六', '日'][k -1]}`;
+                return `${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satuarday', 'Sunday'][k -1]}`;
             },
             getWeatherType(t, type='1') {
-                let reg1 = /多云|阴/;
-                let reg2 = /雷/;
-                let reg3 = /雨/;
-                let reg4 = /晴/;
-                let reg5 = /雪/;
+                let reg1 = /Cloudy/;
+                let reg2 = /Thurder/;
+                let reg3 = /Rainny/;
+                let reg4 = /Suuny/;
+                let reg5 = /Snowy/;
                 if (reg1.test(t)) {
                     if (type === '1') {
                         this.type = 'cloudy';
@@ -134,7 +132,7 @@
 .vchat-weather{
     width: 100%;
     height: 250px;
-    background-image: url("../../../assets/img/weather_b1.jpg");
+    background-image: url("../../../assets/img/b6.jpg");
     position: relative;
     border-radius: 5px 5px 0 0;
     overflow: hidden;

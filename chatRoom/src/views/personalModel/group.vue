@@ -1,6 +1,6 @@
 <template>
     <div class="vchat-group">
-        <div class="vchat-group-list">
+        <div class="vchat-group-list"  :style="backgroundDiv">
             <transition :name="transitonName">
                 <router-view v-if="isShow"></router-view>
             </transition>
@@ -12,6 +12,11 @@
     export default{
         data() {
             return {
+                backgroundDiv: {
+                    backgroundImage: 'url(' + require('../../assets/img/b3.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
                 isShow: true,
                 transitonName: 'moveIn' // 过渡动画名
             }
@@ -36,12 +41,13 @@
         width:100%;
         height: 100%;
         display: flex;
-        justify-content: space-around;
+
+      justify-content: space-around;
         .vchat-group-list{
             width: 100%;
             min-width: 300px;
             height: 100%;
-            background-color: #fff;
+            /*background-color: red;*/
             overflow: hidden;
             position: relative;
         }

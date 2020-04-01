@@ -1,64 +1,64 @@
 <template>
     <div class="person-means">
         <el-form ref="personForm" label-width="80px" class="personForm" :model="personForm" :rules="personRules">
-            <el-form-item label="头像">
+            <el-form-item label="Profile photo">
                 <div class="avatar" @click="setShowCrop">
                     <img :src="imageUrl">
                 </div>
             </el-form-item>
-            <el-form-item label="性别">
-                <el-radio v-model="personForm.sex" label="1">男</el-radio>
-                <el-radio v-model="personForm.sex" label="2">女</el-radio>
-                <el-radio v-model="personForm.sex" label="3">保密</el-radio>
+            <el-form-item label="Gender">
+                <el-radio v-model="personForm.sex" label="1">Male</el-radio>
+                <el-radio v-model="personForm.sex" label="2">Female</el-radio>
+                <el-radio v-model="personForm.sex" label="3">Secert</el-radio>
             </el-form-item>
-            <el-form-item label="昵称" prop="nickname">
-                <el-input v-model="personForm.nickname" placeholder="名称">
+            <el-form-item label="Username" prop="nickname">
+                <el-input v-model="personForm.nickname" placeholder="Username">
                 </el-input>
             </el-form-item>
-            <el-form-item label="地址" prop="nickname">
-                <el-select v-model="personForm.province" filterable placeholder="请选择" style="width: 120px;margin-right: 10px;">
-                    <el-option
-                            v-for="item in provinces"
-                            :key="item.value"
-                            :label="item.name"
-                            :value="item">
-                    </el-option>
-                </el-select>
-                <el-select v-model="personForm.city" filterable placeholder="请选择" style="width: 120px;margin-right: 10px;">
-                    <el-option
-                            v-for="item in cities"
-                            :key="item.value"
-                            :label="item.name"
-                            :value="item">
-                    </el-option>
-                </el-select>
-                <el-select v-model="personForm.town" filterable placeholder="请选择" style="width: 120px;">
-                    <el-option
-                            v-for="item in towns"
-                            :key="item.value"
-                            :label="item.name"
-                            :value="item">
-                    </el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item label="手机" prop="phone">
-                <el-input v-model="personForm.phone" placeholder="手机">
+<!--            <el-form-item label="Address" prop="nickname">-->
+<!--                <el-select v-model="personForm.province" filterable placeholder="Please select" style="width: 120px;margin-right: 10px;">-->
+<!--                    <el-option-->
+<!--                            v-for="item in provinces"-->
+<!--                            :key="item.value"-->
+<!--                            :label="item.name"-->
+<!--                            :value="item">-->
+<!--                    </el-option>-->
+<!--                </el-select>-->
+<!--                <el-select v-model="personForm.city" filterable placeholder="Please select" style="width: 120px;margin-right: 10px;">-->
+<!--                    <el-option-->
+<!--                            v-for="item in cities"-->
+<!--                            :key="item.value"-->
+<!--                            :label="item.name"-->
+<!--                            :value="item">-->
+<!--                    </el-option>-->
+<!--                </el-select>-->
+<!--                <el-select v-model="personForm.town" filterable placeholder="Please select" style="width: 120px;">-->
+<!--                    <el-option-->
+<!--                            v-for="item in towns"-->
+<!--                            :key="item.value"-->
+<!--                            :label="item.name"-->
+<!--                            :value="item">-->
+<!--                    </el-option>-->
+<!--                </el-select>-->
+<!--            </el-form-item>-->
+            <el-form-item label="Phone number" prop="phone">
+                <el-input v-model="personForm.phone" placeholder="Phone number">
                 </el-input>
             </el-form-item>
-            <el-form-item label="电子邮箱" prop="email">
-                <el-input v-model="personForm.email" placeholder="电子邮箱">
+            <el-form-item label="E-mail" prop="email">
+                <el-input v-model="personForm.email" placeholder="E-mail">
                 </el-input>
             </el-form-item>
-            <el-form-item label="生日" >
-              <el-date-picker v-model="personForm.birthday" type="date" :value-format="formatDate" placeholder="选择日期">
+            <el-form-item label="Birthday" >
+              <el-date-picker v-model="personForm.birthday" type="date" :value-format="formatDate" placeholder="Select the date">
               </el-date-picker>
             </el-form-item>
-            <el-form-item label="个性签名" prop="signature">
-                <el-input v-model="personForm.signature" placeholder="签名（不超过100位字符）" type="textarea" aotusize resize="none">
+            <el-form-item label="Personalized signature" prop="signature">
+                <el-input v-model="personForm.signature" placeholder="Personalized signature" type="textarea" aotusize resize="none">
                 </el-input>
             </el-form-item>
         </el-form>
-        <el-button type="primary" @click="saveInfo">保存</el-button>
+        <el-button type="primary" @click="saveInfo">Save</el-button>
         <el-dialog
                 :visible.sync="showCrop"
                 width="700px"
@@ -79,7 +79,7 @@
                     callback();
                 } else {
                     if (value.length > 12) {
-                        callback(new Error('请输入不超过12位字符'));
+                        callback(new Error('Please enter within 12 characters'));
                         return;
                     }
                     callback();
@@ -91,7 +91,7 @@
                 } else {
                     let reg = /^1[3|4|5|7|8]\d{9}$/;
                     if (!reg.test(value)) {
-                        callback(new Error('请输入正确的手机格式！'));
+                        callback(new Error('Please enter the correct format！'));
                         return;
                     }
                     callback();
@@ -103,7 +103,7 @@
                 } else {
                     let reg =  /^[A-Za-z0-9._%-]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,4}$/;
                     if (!reg.test(value)) {
-                        callback(new Error('请输入正确的邮箱格式！'));
+                        callback(new Error('Please enter the correct mail format'));
                         return;
                     }
                     callback();
@@ -114,7 +114,7 @@
                     callback();
                 } else {
                     if (value.length > 100) {
-                        callback(new Error('请输入不超过100位字符'));
+                        callback(new Error('Please enter within 100 characters'));
                         return;
                     }
                     callback();
@@ -204,13 +204,13 @@
                 api.upUserInfo({photo: url, unlink: this.$store.state.user.photo}).then(r => {
                     if (r.code === 0) {
                         this.$message({
-                            message: '保存头像成功',
+                            message: 'Save successfully',
                             type: 'success'
                         });
                         this.$store.commit('setUser', {photo: url});
                     } else {
                         this.$message({
-                            message: '保存头像失败',
+                            message: 'Fail to save!',
                             type: 'warning'
                         })
                     }
@@ -230,13 +230,13 @@
                         api.upUserInfo(this.personForm).then(r => {
                             if (r.code === 0) {
                                 this.$message({
-                                    message: '保存成功',
+                                    message: 'Save successfully',
                                     type: 'success'
                                 });
                                 this.$store.commit('setUser', {nickname: this.personForm.nickname, signature: this.personForm.signature, province: this.personForm.province, city: this.personForm.city, town: this.personForm.town, birthday:this.personForm.birthday});
                             } else {
                                 this.$message({
-                                    message: '保存失败',
+                                    message: 'Fail to save!',
                                     type: 'warning'
                                 })
                             }

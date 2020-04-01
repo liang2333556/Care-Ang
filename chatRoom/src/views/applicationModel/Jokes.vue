@@ -1,11 +1,11 @@
 <template>
     <div class="vchat-Jokes vchat-application">
         <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="全部" name="1"></el-tab-pane>
-            <el-tab-pane label="视频" name="41"></el-tab-pane>
-            <el-tab-pane label="图片" name="10"></el-tab-pane>
-            <el-tab-pane label="段子" name="29"></el-tab-pane>
-            <el-tab-pane label="声音" name="31"></el-tab-pane>
+            <el-tab-pane label="All" name="1"></el-tab-pane>
+            <el-tab-pane label="video" name="41"></el-tab-pane>
+            <el-tab-pane label="picture" name="10"></el-tab-pane>
+            <el-tab-pane label="joke" name="29"></el-tab-pane>
+            <el-tab-pane label="sound" name="31"></el-tab-pane>
         </el-tabs>
         <div class="jokes-content"  v-loading="loading">
             <jokes-item v-for="(v, i) in jokesList" :key="i" :item="v"></jokes-item>

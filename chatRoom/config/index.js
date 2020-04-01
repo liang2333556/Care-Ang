@@ -33,7 +33,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
@@ -50,6 +50,10 @@ module.exports = {
   },
 
   build: {
+
+
+    env: require('./prod.env'),
+
     // Template for index.html
     index: path.resolve(__dirname, '../../chatServer/index.html'),
 
@@ -62,7 +66,7 @@ module.exports = {
      * Source Maps
      */
 
-    productionSourceMap: false,
+    productionSourceMap: true,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 

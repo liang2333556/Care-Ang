@@ -15,7 +15,7 @@
                 <p>
                     {{groupInfo.code}}
                     </p>
-                <p>本群创建于{{createDate}}</p>
+                <p>The group created time:{{createDate}}</p>
                 <p>
                     {{groupInfo.desc}}
                     </p>
@@ -24,9 +24,9 @@
         <div class="vchat-Detail-container">
             <div class="group-users" v-if="applyFlag">
                 <h3 class="group-users-title detail-item">
-                    <span>群聊成员</span>
+                    <span>Group members</span>
                     <p class="many">
-                        <span>共{{groupUsers.length}}人</span>
+                        <span>{{groupUsers.length}} people</span>
                         <v-icon name="enter" color="#d5d5d5"></v-icon>
                     </p>
                 </h3>
@@ -40,14 +40,14 @@
                 </ul>
             </div>
             <div class="group-card detail-item" v-if="applyFlag">
-                <span>我的群名片</span>
+                <span>My group card</span>
                 <p class="many">
-                    <span>别跟我比可爱</span>
+                    <span>nothing...</span>
                     <v-icon name="enter" color="#d5d5d5"></v-icon>
                 </p>
             </div>
             <div class="group-tag detail-item" v-if="groupInfo.holderName === user.name">
-                <span>群标签</span>
+                <span>Group label</span>
                 <p>
                     <el-tag v-for="(v, i) in groupTag" :key="i" v-if="i < 3">{{v}}</el-tag>
                     <v-icon name="enter" color="#d5d5d5"></v-icon>
@@ -55,7 +55,7 @@
             </div>
             <div class="group-managers detail-item" v-if="!applyFlag">
                 <div>
-                    <span>管理员</span>
+                    <span>Manager</span>
                     <a v-for="(v, i) in managers" :key="v['_id']" class="vchat-photo" v-if="i < 3">
                         <img :src="IMG_URL + v.userId.photo" alt="">
                     </a>
@@ -67,8 +67,8 @@
             </div>
 
             <div class="detail-button">
-                <button @click="apply" class="vchat-full-button minor" v-if="!applyFlag">申请加群</button>
-                <button @click="quit" class="vchat-full-button error" v-else>退出群聊</button>
+                <button @click="apply" class="vchat-full-button minor" v-if="!applyFlag">Apply to join</button>
+                <button @click="quit" class="vchat-full-button error" v-else>Quit</button>
             </div>
         </div>
         <div class="Qr-dialog" :class="{active: showGroupQr}">

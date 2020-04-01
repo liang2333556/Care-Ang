@@ -9,15 +9,15 @@
             </div>
         </div>
         <div class="vchat-crop-btn">
-            <div class="choose-pic">
-                <el-button size="small" type="primary">选择图片</el-button>
+            <div class="coose-pic">
+                <el-button size="small" type="primary">Select a picture</el-button>
                 <input type="file" @change="fileChange" ref="cropFile" accept="image/gif,image/jpeg,image/jpg,image/png">
             </div>
             <div>
-                <el-button type="primary" @click="reset">重置</el-button>
+                <el-button type="primary" @click="reset">Reset</el-button>
                 <el-button type="primary" @click="uploadImage">
                     <v-icon class="el-icon-loading" color="#fff" :size="14" v-if="loading"></v-icon>
-                    上传
+                    upload
                 </el-button>
             </div>
         </div>
@@ -80,7 +80,7 @@
                         this.$emit('avatar', r.data);
                     } else {
                         this.$message({
-                            message: '保存失败',
+                            message: 'Fail to save',
                             type: 'warning'
                         })
                     }

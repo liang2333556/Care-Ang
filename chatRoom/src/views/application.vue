@@ -4,7 +4,7 @@
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ name: v.meta.name }" v-for="(v, i) in breadcrumb" :key="i">{{v.meta.title}}</el-breadcrumb-item>
             </el-breadcrumb>
-            <span @click="$router.go(-1)"  v-if="$route.path.indexOf('Sub') > -1">[返回上一页]</span>
+            <span @click="$router.go(-1)"  v-if="$route.path.indexOf('Sub') > -1">[return]</span>
         </div>
         <router-view></router-view>
     </div>

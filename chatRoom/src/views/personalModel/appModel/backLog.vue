@@ -2,18 +2,18 @@
     <div class="backLog">
       <div class="compler-tab">
         <h3>
-            <span>待办日程</span>
-            <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="前往日程管理" @clickIcon="$router.push({name: 'todo'})"></v-icon>
+            <span>Schedule</span>
+            <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="Manage schedule" @clickIcon="$router.push({name: 'todo'})"></v-icon>
         </h3>
         <div class="todoList">
             <ul v-if="todoList.length">
                 <li v-for="(v, i) in todoList" :key="i">
                     <p class="title">{{v.title}}</p>
                     <p class="content">
-                        <v-icon name="clock" color="#686868" :size="18"></v-icon>： {{v.content}}
+                        <v-icon name="clock" color="white" :size="18"></v-icon>： {{v.content}}
                     </p>
                     <p class="info">
-                        <span><i class="address">{{v.address}} </i> {{formatTime(v.start)}} 至 {{formatTime(v.end)}}</span>
+                        <span><i class="address">{{v.address}} </i> {{formatTime(v.start)}} to {{formatTime(v.end)}}</span>
                         <span>
                             <v-icon class="el-icon-delete" cursor="pointer" :size="14" @clickIcon="delTodo(v['_id'])"></v-icon>
                             <!--<v-icon class="el-icon-edit" cursor="pointer" :size="14"></v-icon>-->
@@ -23,15 +23,15 @@
             </ul>
             <v-nodata :url="bg" v-else>
                 <p class="vchat-no-have">
-                    暂无日程安排哟!
-                </p>
+                  There is nothing...
+                 </p>
             </v-nodata>
         </div>
       </div>
       <div class="compler-tab" style="margin-left: 1.5%">
         <h3>
-          <span>许愿墙</span>
-          <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="许个愿吧" @clickIcon="addWishing()"></v-icon>
+          <span>Wishing wall</span>
+          <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="Leave your wish here~" @clickIcon="addWishing()"></v-icon>
         </h3>
         <div class="record-tab div-overflow" >
           <ul v-if="wishList.length" style="padding: 0">
@@ -49,15 +49,15 @@
           </ul>
           <v-nodata :url="bg" v-else>
             <p class="vchat-no-have">
-              暂无愿望动态哟!
+              Nothing...
             </p>
           </v-nodata>
         </div>
       </div>
       <div class="compler-tab" style="margin-left: 1.5%;overflow: hidden">
         <h3>
-          <span>日记</span>
-          <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="添加日志" @clickIcon="addRecord()"></v-icon>
+          <span>Diary</span>
+          <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="Add Diary" @clickIcon="addRecord()"></v-icon>
         </h3>
         <div class="record-tab div-overflow">
           <ul v-if="recordList.length" style="padding: 0">
@@ -76,24 +76,24 @@
           </ul>
           <v-nodata :url="bg" v-else>
             <p class="vchat-no-have">
-              暂无日志记录哟!
+          There is nothing
             </p>
           </v-nodata>
         </div>
       </div>
       <div>
-        <el-dialog title="添加日志" :visible.sync="dialogRecord" width="70%">
-          <el-form ref="recordRule" :model="recordForm" style="padding: 0px 15px">
-            <el-form-item label="标题" prop="title">
+        <el-dialog class ="diary" title="Add Diary" :visible.sync="dialogRecord" width="70%"  :style="backgroundDiv">
+          <el-form ref="recordRule" :model="recordForm" style="padding: 0px 15px" >
+            <el-form-item label="Title" prop="title">
               <el-input v-model="recordForm.title"></el-input>
             </el-form-item>
-            <el-form-item label="内容" prop="content">
+            <el-form-item label="Content" prop="content" >
               <el-input v-model="recordForm.content" type="textarea" :autosize="{ minRows: 18}"></el-input>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogRecord = false">取 消</el-button>
-            <el-button type="primary" @click="submitRecord('recordRule')">确 定</el-button>
+            <el-button @click="dialogRecord = false">Chancel</el-button>
+            <el-button type="primary" @click="submitRecord('recordRule')">Submit</el-button>
           </div>
         </el-dialog>
       </div>
@@ -111,17 +111,18 @@
         </el-dialog>
       </div>
 
-      <div>
-        <el-dialog title="许愿" :visible.sync="dialogWishing" width="50%">
+      <div >
+        <el-dialog  title="Wish" :visible.sync="dialogWishing" width="70%"  :style="background1" >
           <el-input type="textarea" :autosize="{ minRows: 8}" v-model="wishForm.wish"></el-input>
           <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogWishing = false">取 消</el-button>
-            <el-button type="primary" @click="submitWish()">确 定</el-button>
+            <el-button @click="dialogWishing = false">Chancel</el-button>
+            <el-button type="primary" @click="submitWish()">Submit</el-button>
           </div>
         </el-dialog>
       </div>
-      <div>
-        <el-dialog title="愿望详情" :visible.sync="dialogWishingDetail" width="50%">
+
+      <div >
+        <el-dialog title="Wish" :visible.sync="dialogWishingDetail" width="50%">
           <!--<el-input type="textarea" :autosize="{ minRows: 8}" v-model="wishForm.wish"></el-input>-->
           <div style="margin-bottom: 28px">
             <span style="float: left;font-size: 18px;">{{wishForm.nickname}}</span>
@@ -137,7 +138,8 @@
 </template>
 
 <script>
-    import bg from '../../../assets/img/zwsj4.png';
+    import bg from '../../../assets/img/zwsj1.png';
+
     import api from '@/api';
     import { mapState } from 'vuex';
     import utils from '@/utils/utils';
@@ -145,6 +147,21 @@
         name: 'backLog',
         data() {
             return {
+                backgroundDiv: {
+                    backgroundImage: 'url(' + require('../../../assets/img/b2.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
+                background1: {
+                    backgroundImage: 'url(' + require('../../../assets/img/b4.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
+                background2: {
+                    backgroundImage: 'url(' + require('../../../assets/img/b5.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
               bg: bg,
               todoList: [],
               dialogWishing: false,
@@ -167,8 +184,8 @@
               },
               detailRecordForm:{},
               recordRule:{
-                title:[{ required: true, message: '请输入标题', trigger: 'blur' }],
-                content:[{ required: true, message: '请输入内容', trigger: 'blur' }],
+                title:[{ required: true, message: 'Input the title', trigger: 'blur' }],
+                content:[{ required: true, message: 'Input the content', trigger: 'blur' }],
               },
 
             }
@@ -185,18 +202,18 @@
               return utils.formatTime(new Date(t));
           },
           delTodo(id) {
-              this.$confirm('确认删除该日程记录吗？', '确认信息')
+              this.$confirm('Are you sure to delete？', 'Confirm')
                   .then(() => {
                       api.delTodo({'_id': id}).then(r => {
                           if (r.code === 0) {
                               this.todoList = this.todoList.filter(v => id !== v['_id']);
                               this.$message({
-                                  message: '删除成功',
+                                  message: 'Delete sucessfully',
                                   type: 'success'
                               });
                           } else {
                               this.$message({
-                                  message: '删除失败',
+                                  message: 'Fail to delete!',
                                   type: 'warning'
                               });
                           }
@@ -216,7 +233,7 @@
           submitWish(){
             if(this.wishContent === '') {
               this.$message({
-                message: '您还没有许下愿望哟',
+                message: 'You have not write your wish!',
                 type: 'warning'
               });
               return
@@ -229,7 +246,7 @@
               api.addWishing(params).then(res => {
                 if(res.code === 0){
                   this.$message({
-                    message: '您已经许下愿望啦',
+                    message: 'You have left your wish!',
                     type: 'success'
                   });
                   this.getWish()
@@ -263,13 +280,13 @@
             this.$refs[formName].validate((valid) => {
               if (valid) {
                 this.recordForm.updateTime = utils.formatDateTime(Date.now())
-                if(this.recordTitle === "添加") {
+                if(this.recordTitle === "Add") {
                   this.recordForm.userId = this.user.id
                   this.recordForm.createTime = utils.formatDateTime(Date.now())
                   api.addRecord(this.recordForm).then(res => {
                     if(res.code === 0) {
                       this.$message({
-                        message: '保存日志成功',
+                        message: 'Save Diary successfully',
                         type: 'success'
                       });
                       this.getRecord();
@@ -280,7 +297,7 @@
                   api.upRecord(this.recordForm).then( res => {
                     if(res.code === 0) {
                       this.$message({
-                        message: '保存日志成功',
+                        message: 'Save successfully!',
                         type: 'success'
                       });
                       this.getRecord();
@@ -319,21 +336,21 @@
             this.dialogRecordDetail = true
           },
           editRecord(obj){
-            this.recordTitle = "修改"
+            this.recordTitle = "Edit"
             this.recordForm = obj
             this.dialogRecord = true
           },
           delRecord(obj){
-            this.$confirm('确认删除?', '提示', {
-              confirmButtonText: '确定',
-              cancelButtonText: '取消',
+            this.$confirm('Delete?', 'Tip', {
+              confirmButtonText: 'Confirm',
+              cancelButtonText: 'Chancel',
               type: 'warning'
             }).then(() => {
               api.delRecord({_id:obj._id}).then( res => {
                 debugger
                 if(res.code === 0) {
                   this.$message({
-                    message: '删除日志成功',
+                    message: 'Delete successfully!',
                     type: 'success'
                   });
                   this.getRecord();
@@ -350,7 +367,7 @@
                 createTime:'',
                 updateTime:''
             }
-            this.recordTitle = "添加"
+            this.recordTitle = "Add"
             this.dialogRecord = true;
           }
         },
@@ -366,21 +383,31 @@
 </script>
 
 <style lang="scss" scoped>
+
     .compler-tab{
       float: left;
       vertical-align: top;
       width: 32%;
-      height: 99%;
+      height: 100%;
       border-left: 1px solid white;
       border-bottom: 1px solid white;
       border-right: 1px solid white;
+      border-radius: 29px 29px 0 0;
+      font-family:word;
+      /*background-image: url("../../../assets/img/b2.jpg");*/
+
     }
     .backLog{
         width: 100%;
         height: calc(100% - 250px);
         overflow-y: auto;
         box-sizing: border-box;
-        h3{
+      border-radius: 29px 29px 0 0;
+      background-image: url("../../../assets/img/b13.jpg");
+
+      font-family:word;
+
+      h3{
             display: flex;
             justify-content: space-between;
             line-height: 36px;
@@ -388,45 +415,63 @@
             padding: 0 10px;
             box-sizing: border-box;
             font-weight: 400;
-            color: #84c2c5;
-            background-color: #fff;
-        }
+            color: white;
+        border-radius: 29px 29px 0 0;
+        background: #CCCCFF;
+        font-family:word;
+
+
+      }
         .todoList{
             li{
                 text-align: left;
-                background-color: #fff;
+              margin: 8px 5px;
+              font-family:word;
+
+              background-image: url("../../../assets/img/b10.jpg");
                 padding: 5px 10px;
                 box-sizing: border-box;
                 margin-bottom: 10px;
+               coloe:white;
             }
             .title{
                 font-size: 16px;
-                color: #161616;
+                color: white;
                 margin-bottom: 5px;
                 border-left: 3px solid #28828f;
                 padding-left: 5px;
+              font-family:word;
+
             }
             .content{
                 font-size: 14px;
-                color: #686868;
+                color: white;
                 margin-bottom: 5px;
+              font-family:word;
+
             }
             .info{
                 font-size: 12px;
-                color: #9a9a9a;
+                color: white;
                 font-family: "Times New Roman", Times, serif;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                .address{
+              font-family:word;
+
+              .address{
                     color: #ff714f;
                     font-style: normal;
                     display: inline-block;
                     border: 1px solid #ff714f;
                     padding: 1px 5px;
-                }
+                font-family:word;
+
+              }
                 i{
                     margin-right: 6px;
+                  font-family:word;
+
                 }
                 span:nth-of-type(2) {
                     display: none;
@@ -446,14 +491,16 @@
             }
         }
       .record-tab{
-        height: 100%;
-      }
+        height: 100%;      }
       .record-tab .record-li {
         border: 1px ;
         border-radius: 5px;
         margin: 8px 5px;
         height: 60px;
-        background-color: #A1CFF9;
+        font-family:word;
+
+        background-image: url("../../../assets/img/b10.jpg");
+       color:white;
       }
       .div-overflow{
         overflow-y:auto;
@@ -479,10 +526,13 @@
       }
       .record-detail .el-dialog__wrapper .el-dialog .el-dialog__header .el-dialog__title {
         font-size: 30px !important;
+
         /*font-style: ;*/
+
       }
       .el-dialog__title{
         font-size: 30px !important;
+
         /*font-style: ;*/
       }
     }

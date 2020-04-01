@@ -2,6 +2,43 @@
  * Created by wyw on 2018/8/4.
  */
 export default {
+  setAppStatus: (state, appStatus) => {
+    state.appStatus.state = appStatus.state
+    state.appStatus.message = appStatus.message
+  },
+
+  setCoordinates: (state, coordinates) => {
+    state.coordinates.latitude = coordinates.latitude
+    state.coordinates.longitude = coordinates.longitude
+  },
+
+  setGeocode: (state, geocode) => {
+    state.geocode = geocode
+    state.coordinates.latitude = geocode.geometry.location.lat
+    state.coordinates.longitude = geocode.geometry.location.lng
+  },
+
+  setGoogleMapsLoaded: (state, googleMapsLoaded) => {
+    state.googleMapsLoaded = googleMapsLoaded
+  },
+
+  setInputQuery: (state, inputQuery) => {
+    state.inputQuery = inputQuery
+  },
+
+  setLocationIcon: (state, locationIcon) => {
+    state.locationIcon = locationIcon
+  },
+
+  setUnits: (state, units) => {
+    state.units = units
+    localStorage.setItem('units', units)
+  },
+
+  setWeather: (state, weather) => {
+    state.weather = weather
+  },
+
     setUser(state, data) {
         if (data === 'out') {
             state.user = {};

@@ -1,6 +1,6 @@
 <template>
     <div class="vchat-photoWall">
-        <v-apheader title="照片墙" back="-1"></v-apheader>
+        <v-apheader title="Photo wall" back="-1"></v-apheader>
         <ul class="photoWall-ul">
             <li v-for="(v, i) in coverList" :key="i" :style="{backgroundImage: 'url('+ IMG_URL + v +')'}">
                 <i class="el-icon-circle-close-outline icon" @click="del(v)"></i>
@@ -10,7 +10,7 @@
                 <input type="file" @change="fileChange" ref="imgFile" accept="image/png, image/jpeg, image/gif, image/jpg">
             </li>
         </ul>
-        <span>最多可设置6张</span>
+        <span>You can add within 6 photos</span>
     </div>
 </template>
 
@@ -43,7 +43,7 @@
                 let f = this.$refs['imgFile'].files[0];
                 const isLt2M = f.size / 1024 / 1024 < 1;
                 if (!isLt2M) {
-                    this.$message.error('图片大小不能超过 1MB!');
+                    this.$message.error('The size of picture ca not beyond  1MB!');
                     this.$refs['wallpaperFile'].value = '';
                     return;
                 }
@@ -57,19 +57,19 @@
                             if (res.code === 0) {
                                 this.coverList.push(r.data);
                                 this.$message({
-                                    message: '上传成功',
+                                    message: 'Upload successfully',
                                     type: 'success'
                                 })
                             } else {
                                 this.$message({
-                                    message: '上传失败',
+                                    message: 'Fail to upload',
                                     type: 'warning'
                                 })
                             }
                         })
                     } else {
                         this.$message({
-                            message: '上传失败',
+                            message: 'Fail to upload',
                             type: 'warning'
                         })
                     }
@@ -77,9 +77,9 @@
                 this.$refs['imgFile'].value = '';
             },
             del(f) {
-                this.$confirm('确认删除?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
+                this.$confirm('Delete?', 'Tip', {
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No',
                     type: 'warning'
                 }).then(() => {
                     let arr = this.coverList.filter(v => v !== f);
@@ -88,12 +88,12 @@
                             this.coverList = arr;
                             this.$message({
                                 type: 'success',
-                                message: '删除成功!'
+                                message: 'Delete successfully!'
                             });
                         } else {
                             this.$message({
                                 type: 'warning',
-                                message: '删除失败!'
+                                message: 'Fail to delete!'
                             });
                         }
                     })
@@ -113,7 +113,7 @@
         height: 100%;
         span{
             font-size: 12px;
-            color: #c9c9c9;
+            color:blue;
             display: block;
             text-align: left;
             padding: 0 20px;

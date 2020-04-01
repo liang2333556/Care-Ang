@@ -1,6 +1,6 @@
 <template>
     <div class="Not-found">
-        <span @click="$router.go(-1)">返回上一页</span>
+        <span @click="$router.go(-1)">return</span>
     </div>
 </template>
 

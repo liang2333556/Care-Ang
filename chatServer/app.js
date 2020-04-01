@@ -22,7 +22,22 @@ const todo = require('./routes/todo');
 const caring = require('./routes/caring');
 const wishing = require('./routes/wishing');
 const record = require('./routes/record');
+const cors = require('cors')
+const RateLimit = require('express-rate-limit')
 
+const geocode = require('./routes/geocode.js')
+const weather = require('./routes/weather.js')
+
+const limiter = new RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    delayMs: 0 // disable delaying - full speed until the max limit is reached
+})
+
+app.use(cors())
+app.use(limiter)
+app.use(geocode)
+app.use(weather)
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

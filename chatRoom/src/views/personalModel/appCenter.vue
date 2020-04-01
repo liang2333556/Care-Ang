@@ -1,13 +1,12 @@
 <template>
     <div class="vchat-appCenter">
-        <weather></weather>
         <backLog></backLog>
     </div>
 </template>
 
 <script>
-    import weather from './appModel/weather.vue';
     import backLog from './appModel/backLog.vue';
+
     export default{
         data() {
             return {
@@ -15,8 +14,8 @@
             }
         },
         components: {
-            weather,
-            backLog
+            backLog,
+
         }
     }
 </script>

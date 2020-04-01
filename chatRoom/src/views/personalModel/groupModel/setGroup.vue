@@ -1,25 +1,25 @@
 <template>
     <div class="vchat-setGroup">
-        <v-apheader title="新建群聊" back="/main/personalMain/group/own"></v-apheader>
+        <v-apheader title="Create group" back="/main/personalMain/group/own"></v-apheader>
 
         <div class="vchat-setGroup-contianer">
             <el-form ref="groupForm" label-width="65px" class="groupForm" :rules="groupRules" :model="groupForm">
-                <el-form-item label="群头像">
+                <el-form-item label="Group photo">
                     <div class="avatar-container" @click="setShowCrop">
                         <img v-if="groupImage" :src="InmageUrl + groupImage" class="avatar">
                         <i class="el-icon-plus" v-else></i>
                     </div>
                 </el-form-item>
-                <el-form-item label="群名称" prop="groupName">
-                    <el-input v-model="groupForm.groupName" placeholder="名称">
+                <el-form-item label="Group Name" prop="groupName">
+                    <el-input v-model="groupForm.groupName" placeholder="name">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="群简介" prop="groupDesc">
-                    <el-input v-model="groupForm.groupDesc" placeholder="请输入不超过200个字" type="textarea" aotusize resize="none" :maxlength="200">
+                <el-form-item label="Group introduction" prop="groupDesc">
+                    <el-input v-model="groupForm.groupDesc" placeholder="Please enter within 90 characters" type="textarea" aotusize resize="none" :maxlength="200">
                     </el-input>
                 </el-form-item>
             </el-form>
-            <button @click="setUp" class="vchat-full-button">创建</button>
+            <button @click="setUp" class="vchat-full-button">create</button>
         </div>
         <el-dialog
                 :visible.sync="showCrop"
@@ -38,11 +38,11 @@
         data() {
             let validateName = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入群名称'));
+                    callback(new Error('Please input the group name'));
                 } else {
                     let reg = /^[\u4e00-\u9fa5_a-zA-Z0-9!！￥@#$,，.。？?、/;:：；|~·]{2,10}$/;
                     if (!reg.test(value)) {
-                        callback(new Error('请输入2~10位中文、数字、字母、下划线'));
+                        callback(new Error('Please input 2~10 characters'));
                         return;
                     }
                     callback();
@@ -50,10 +50,10 @@
             };
             let validateDesc = (rule, value, callback) => {
                 if (value === '') {
-                    callback(new Error('请输入群简介'));
+                    callback(new Error('Please input group introduction'));
                 } else {
                     if (value.length > 200) {
-                        callback(new Error('请输入不超过200位字符'));
+                        callback(new Error('Please input no more than 200 characters'));
                         return;
                     }
                     callback();
@@ -116,10 +116,10 @@
                                         this.$store.commit('setConversationsList', params);
                                     }
                                 });
-                                this.$message.success('创建成功');
+                                this.$message.success('Create successfully');
                                 this.$router.push('/main/personalMain/group/own');
                             } else {
-                                this.$message.success('创建成功');
+                                this.$message.success('Create successfully');
                             }
                         });
                     } else {

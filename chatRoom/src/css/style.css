@@ -1,0 +1,195 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+:after,
+:before {
+  background-repeat: no-repeat;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  display: block;
+  font-size: 15px;
+}
+
+.btn.btn-primary {
+  font-family:word;
+  color: #fff;
+  width: 325px !important;
+  height: 60px;
+  font-size: 16px;
+  line-height: 60px;
+  text-align: center;
+  border: 0;
+  margin: 0 25px;
+  border-radius: 30px;
+}
+
+#movieslist {
+  padding: 2% 4% 0;
+}
+
+#movieslist h3 {
+  font-size: 20px;
+  margin: 0 25px;
+  text-align: left;
+  color:black;
+}
+
+#movieslist .search-wrapper {
+  margin: 25px;
+}
+#movieslist .search-wrapper .textbox {
+  width: 40%;
+  padding: 15px;
+  background-color: #FFCC99;
+  border: none;
+  border-left: 4px solid;
+  border-radius:20px;
+}
+
+
+#movieslist .list {
+  width: 100%;
+  display: inline-block;
+}
+#movieslist .btn1 {
+  background-color: #6699CC;
+  color:#FFCC33;
+  border-radius:50px;
+}
+#movieslist .btn2 {
+  background-color: #6699CC;
+  color:#FFCC33;
+  border-radius:50px;
+}
+#movieslist .btn3 {
+  background-color: #6699CC;
+  color:#FFCC33;
+  border-radius:50px;
+}
+#movieslist .btn4 {
+  background-color: #6699CC;
+  color:#FFCC33;
+  border-radius:50px;
+}
+
+#movieslist .list .movie_box {
+  width: calc(100%/5 - 50px);
+  height: 500px;
+  float: left;
+  margin: 25px;
+  color: #fff;
+}
+
+#movieslist .title {
+  font-family:word;
+  position:center;
+  color:#6600FF;
+  font-size: 16px;
+  text-align: left;
+  display: block;
+  text-decoration: none;
+
+}
+
+#movieslist .title h3 {
+  text-align: left;
+  margin: 0;
+  text-align:center;
+  color:#6600FF;
+}
+
+#movie {
+  width: 100%;
+  display: inline-block;
+  background-color:#CCCCCC;
+}
+
+#movie .movie_img {
+  width: 100%;
+  height: 350px;
+}
+
+#movie .movie_img img {
+  width: 100%;
+  height: 100%;
+}
+
+#movie .intro {
+  padding: 15px 0;
+
+}
+#movie .vote {
+  background-color:#555555;
+  width:30%;
+  color:#FFFF00;
+  border-radius:50px;
+
+
+
+}
+
+#movie .intro .genre {
+  float: left;
+  width: 30%;
+  text-align: left;
+
+}
+
+#movie .intro .genre .left {
+  float: left;
+  width: 24%;
+  color:black;
+}
+
+#movie .intro .genre .right {
+  width: 33%;
+  float: right;
+  height: 50px;
+  word-break: break-word;
+  color:black;
+}
+
+#movie .intro .releasedyear {
+  width: 26%;
+  float: right;
+  color:black;
+}
+
+.pagination {
+  display: inline-block;
+  color:black;
+  padding:50px;
+  float:center;
+
+
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color:black;
+  cursor: unset;
+}
+
+.pagination li.disabled a {
+  color: #6600CC;
+  cursor: unset;
+}
+
+.pagination a {
+
+  padding: 3px 10px;
+  text-decoration: none;
+}

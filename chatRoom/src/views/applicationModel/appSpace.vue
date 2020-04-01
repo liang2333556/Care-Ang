@@ -26,31 +26,31 @@
                 appList: [
                     {
                         name: 'one',
-                        title: '看视频',
+                        title: 'Watch video',
                         src: require('../../assets/img/film-icon.png'),
                         link: 'videoGallery'
                     },
                     {
                         name: 'two',
-                        title: '听音乐',
+                        title: 'Listen to music',
                         src: require('../../assets/img/music-icon.png'),
-                        link: ''
+                        link: 'musicplay'
                     },
                     {
                         name: 'thr',
-                        title: '玩游戏',
+                        title: 'Play games',
                         src: require('../../assets/img/game-icon.png'),
                         link: 'games'
                     },
                     {
                         name: 'four',
-                        title: '看头条',
+                        title: 'Watch news',
                         src: require('../../assets/img/news-icon.png'),
                         link: 'news'
                     },
                     {
                         name: 'fif',
-                        title: '侃段子',
+                        title: 'Jokes',
                         src: require('../../assets/img/duanzi-icon.png'),
                         link: 'jokes'
                     }
@@ -112,7 +112,7 @@
                 border-radius: 5px;
                 p{
                     line-height: 26px;
-                    font-family: 'YouYuan','KaiTi';
+                    font-family: word;
                     transition: transform 0.5s;
                     transform: scale(1);
                 }
@@ -146,8 +146,8 @@
                 transform: scale(1.2);
             }
             .one{
-                width: 450px;
-                height: 300px;
+                width: 350px;
+                height: 250px;
                 .bg{
                     background-image: url("../../assets/img/film.jpg");
                 }
@@ -174,7 +174,7 @@
                 }
             }
             .fif{
-                width: 450px;
+                width: 550px;
                 height: 300px;
                 .bg{
                     background-image: url("../../assets/img/duanzi.jpg");

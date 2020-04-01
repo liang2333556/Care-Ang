@@ -3,7 +3,7 @@
         <ul class="theme-list">
             <li>
                 <div class="theme-style">
-                    Vchat
+                    Care
                 </div>
                 <el-button :type="projectTheme === 'vchat' ? 'success' : 'info'" :loading="setThemeIng === 'vchat'" @click="setTheme('vchat')">
                     <i class="el-icon-success el-icon--right" v-if="projectTheme === 'vchat'"></i>
@@ -35,14 +35,14 @@
                         this.$store.commit('setUser', {projectTheme: t});
                         this.$store.dispatch('setTheme');
                         this.$message({
-                            message: '设置成功',
+                            message: 'Set successfully',
                             type: 'success'
                         })
                     } else {
                         this.projectTheme = this.$store.state.user.projectTheme;
                         this.setThemeIng = '';
                         this.$message({
-                            message: '设置失败',
+                            message: 'Fail to set',
                             type: 'warning'
                         })
                     }
@@ -50,12 +50,12 @@
             },
             getText(t) {
                 if (this.setThemeIng === t) {
-                    return '激活中';
+                    return 'Activation';
                 }
                 if (this.projectTheme === t) {
-                    return '已激活';
+                    return 'Activated';
                 } else {
-                    return '激活';
+                    return 'Active';
                 }
             }
         },

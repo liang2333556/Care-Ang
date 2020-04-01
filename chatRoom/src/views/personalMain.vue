@@ -10,7 +10,7 @@
                         <li v-for="v in nav" :key="v.id" :class="{active: $route.path.indexOf(v.link) > -1}">
                             <router-link :to="{path: v.link}">
                                 <i class="iconfont" :class="[$route.path.indexOf(v.link) === -1 ? v.class : v.activeClass]"></i>
-                                <p>{{v.name}}</p>
+                                <p class="name">{{v.name}}</p>
                             </router-link>
                         </li>
                     </ul>
@@ -30,14 +30,14 @@
             return {
                 nav: [
                     {
-                        name: '好友',
+                        name: 'Friends',
                         class: 'icon-people',
                         activeClass: 'icon-people_fill',
                         id: 2,
                         link: '/main/personalMain/friendly'
                     },
                     {
-                        name: '群聊',
+                        name: 'Chatting group',
                         class: 'icon-group',
                         activeClass: 'icon-group_fill',
                         id: 3,
@@ -56,13 +56,24 @@
     }
 </script>
 <style scoped lang="scss">
+  .name{
+    color:#0044BB;
+
+  }
+
+  .iconfont{
+    color:#0044BB;
+  }
     .vchat-personalMain {
+     color:#0044BB;
+      font-family:word;
         width: calc(100% - 30px);
         height: 100%;
         display: flex;
         justify-content: flex-start;
     }
     .vchat-content-left-view {
+
         width: 320px;
         height: 100%;
         padding: 20px 0 30px;
@@ -73,8 +84,8 @@
             width:100%;
             height: 100%;
             box-sizing: border-box;
-            background-color: #fff;
-            box-shadow: 0 0 1px 1px #d5d5d5;
+            background-color: #CCCCFF;
+            box-shadow: 0 0 1px 1px #9966FF;
         }
         .vchat-content-left-content{
             width:100%;
@@ -85,7 +96,7 @@
             width:100%;
             height: 50px;
             box-sizing: border-box;
-            border-top: 1px solid #ebebeb;
+            border-top: 1px solid #9966FF;
             ul{
                 height: 100%;
                 display: flex;

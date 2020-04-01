@@ -2,17 +2,19 @@
     <div class="vchat-header">
         <div class="vchat-main-header" v-if="isMainHeader">
             <div class="vchat-header-container">
-                <div class="vchat-logo">Vchat</div>
+              <div class="logo">
+                <img src="../../../assets/img/vchat.png" class="logoimg">CARE
+              </div>
                 <div class="vchat-mine">
                     <nav class="vchat-noUser">
                         <!--class="animated" :class="{bounceIn: hover}" @mouseover="mouseover" ref="showChat"-->
                         <div>
                             <el-badge :value="unReadCount" :max="99" :hidden="unReadCount === 0" class="headerBadg">
-                                <span class="nav-btn">消息</span>
+                                <span class="nav-btn">Message</span>
                             </el-badge>
                             <ul class="handleList">
-                                <li @click="showChat = !showChat"><span>会话列表</span></li>
-                                <li @click="reset"><span>会话窗口复位</span></li>
+                                <li @click="showChat = !showChat"><span>Message List</span></li>
+<!--                                <li @click="reset"><span>Reset the chatting window</span></li>-->
                             </ul>
                         </div>
                     </nav>
@@ -32,9 +34,9 @@
                     <div>
                         <p>
                             <span class="vchat-line1" :title="user.nickname">{{user.nickname}}</span>
-                            <span @click="loginOut" class="logout">[退出]</span>
+                            <span @click="loginOut" class="logout">[Log out]</span>
                         </p>
-                        <p class="vchat-line2" :title="user.signature">{{user.signature ? '个性签名：' + user.signature : '这个人很懒，暂时没有签名哦！'}}</p>
+                        <p class="vchat-line2" :title="user.signature">{{user.signature ? ' Personalized signature：' + user.signature : 'Nothing...'}}</p>
                     </div>
                 </div>
             </div>
@@ -57,14 +59,16 @@
         </div>
         <div class="vchat-little-header" v-else>
             <div>
-                <router-link to="/main/personalMain">vchat</router-link>
-                <span class="logout" @click="$router.push({name: 'personalMain'})">[返回]</span>
+                  <img src="../../../assets/img/vchat.png" class="logoimg2">
+
+                <router-link to="/main/personalMain">Care</router-link>
+                <span class="logout" @click="$router.push({name: 'personalMain'})">[Returm]</span>
             </div>
             <div class="avatar">
                 <a href="javascipt:;">
                     <img :src="avatar" alt="">
                 </a>
-                <span @click="loginOut" class="logout">[退出]</span>
+                <span @click="loginOut" class="logout">[Log out]</span>
             </div>
         </div>
     </div>
@@ -89,18 +93,14 @@
 //                hover: false,
                 draggable: true, // 允许拖拽
                 handleList: [
+
                     {
-                        name: '个人空间',
-                        icon: 'icon-zhanghaoguanli1',
-                        link: '/mine'
-                    },
-                    {
-                        name: '日程管理',
+                        name: 'Schedule',
                         icon: 'icon-huihuajilu',
                         link: '/todo'
                     },
                     {
-                        name: '设置',
+                        name: 'Setting',
                         icon: 'icon-shezhi1',
                         link: '/mySetting'
                     }
@@ -146,7 +146,7 @@
                 this.leaveRoom();
                 api.loginOut().then(r => {
                     if (r.code === 0) {
-                        this.$message.success('退出成功');
+                        this.$message.success('Log out successfully');
                         this.$store.commit('setUser', 'out');
                         this.$router.replace('/');
                     }
@@ -183,26 +183,33 @@
     }
 </script>
 <style lang="scss">
+
     .vchat-header{
+      .logo{
+        font-size:52px;
+      }
+
         .vchat-main-header {
+
             width: 100%;
             height: 80px;
             .vchat-header-container{
+              font-family:word;
+               color:#9900FF;
                 width: 100%;
                 height: 80px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 position: relative;
-                background-color: #28828f;
-                z-index: 2002;
+              background-image: url("../../../assets/img/b13.jpg");
+
+              z-index: 2002;
             }
-            .vchat-logo {
-                width: 120px;
-                height: 80px;
-                /*color: #fff;*/
-                font-size: 28px;
-                line-height: 80px;
+            .logoimg {
+           width:80px;
+              height:80px;
+
             }
             .vchat-mine {
                 display: flex;
@@ -363,14 +370,14 @@
                 .handle{
                     width: 8px;
                     height: 8px;
-                    background: #f5f5f5;
+                    background: color;
                     border-radius: 2px;
                 }
             }
         }
         .vchat-little-header{
             width:100%;
-            height: 40px;
+            height: 70px;
             padding: 0 30px;
             text-align: left;
             box-sizing: border-box;
@@ -379,9 +386,11 @@
             align-items: center;
             >div{
                 a{
-                    font-size: 20px;
-                    line-height: 40px;
-                    color: #fff;
+
+                    font-size: 30px;
+                    color: #CCCFF;
+                  line-height: 40px;
+
                 }
                 span{
                     margin-left: 10px;
@@ -389,17 +398,23 @@
                     font-size: 12px;
                 }
             }
+          .logoimg2 {
+            width:60px;
+            height:60px;
+
+          }
             .avatar{
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
+                position:relatives;
                 a{
                     display: block;
                     width:32px;
                     height: 32px;
                     margin-right: 10px;
                     border-radius: 50%;
-                    overflow: hidden;
+                    overflow: show;
                     img{
                         width:100%;
                     }

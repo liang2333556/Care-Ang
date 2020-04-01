@@ -7,7 +7,7 @@
             <div class="container-chat">
                 <div class="chat-room"
                      v-loading="chatLoading"
-                     element-loading-text="拼命加载中"
+                     element-loading-text="Loading..."
                      element-loading-spinner="el-icon-loading"
                      element-loading-background="rgba(0, 0, 0, 0.8)"
                 >
@@ -16,7 +16,7 @@
                 <div class="chat-send">
                     <div class="tool">
                         <span class="tool-item" v-watchMouse="showEmoji">
-                            <v-icon name="biaoqing1" :color="user.chatColor" @clickIcon="showEmoji.f = !showEmoji.f" cursor="pointer" title="发送表情"></v-icon>
+                            <v-icon name="biaoqing1" :color="user.chatColor" @clickIcon="showEmoji.f = !showEmoji.f" cursor="pointer" title="Sebd emoji"></v-icon>
                             <el-collapse-transition>
                                 <div class="emoji-container" v-show="showEmoji.f">
                                     <emoji @chooseEmoji="chooseEmoji" @chooseEmojiDefault="chooseEmojiDefault"></emoji>
@@ -25,31 +25,31 @@
                         </span>
                         <span class="tool-item">
                             <v-icon name="tupian2" :color="user.chatColor"></v-icon>
-                            <input type="file" title="选择图片" @change="InmageChange" ref="chooseInmage" accept="image/png, image/jpeg, image/gif, image/jpg">
+                            <input type="file" title="Select picture" @change="InmageChange" ref="chooseInmage" accept="image/png, image/jpeg, image/gif, image/jpg">
                         </span>
                         <span class="tool-item" >
                             <v-upload-popover :visible="uplaodVisible.f" @handleSuccess="uploadFileSuccess" v-watchMouse="uplaodVisible">
-                                <v-icon name="wenjian2" :color="user.chatColor" @clickIcon="uplaodVisible.f = !uplaodVisible.f" title="选择文件"></v-icon>
+                                <v-icon name="wenjian2" :color="user.chatColor" @clickIcon="uplaodVisible.f = !uplaodVisible.f" title="Select file"></v-icon>
                             </v-upload-popover>
                         </span>
                     </div>
                     <textarea v-model="message" @keyup.enter="send(false)" v-fontColor="user.chatColor"></textarea>
                     <div class="enter">
-                        <button class="vchat-button-mini info" @click="clear">清空</button>
-                        <button class="vchat-button-mini" @click="send(false)">发送</button>
+                        <button class="vchat-button-mini info" @click="clear">Clear</button>
+                        <button class="vchat-button-mini" @click="send(false)">Send</button>
                     </div>
                 </div>
             </div>
             <div class="container-handel" v-if="currSation.type === 'group'">
                 <div class="handel-notice">
-                    <h3>群通知</h3>
+                    <h3>Group message</h3>
                     <ul>
-                        <li class="vchat-line1" title="求star❤❤❤，点击跳转源码"><a href="https://github.com/wuyawei/Vchat" target="_blank" style="color: #fff">期待你的star <i :style="{color: 'red', fontStyle: 'normal'}">❤❤❤</i></a></li>
+<!--                        <li class="vchat-line1" title="求star❤❤❤，点击跳转源码"><a href="https://github.com/wuyawei/Vchat" target="_blank" style="color: #fff">期待你的star <i :style="{color: 'red', fontStyle: 'normal'}">❤❤❤</i></a></li>-->
                     </ul>
                 </div>
                 <div class="handel-member">
                     <h3>
-                        <span>群成员 ( {{onlineNum}}/{{groupUsers.length}} )</span>
+                        <span>Group member ( {{onlineNum}}/{{groupUsers.length}} )</span>
                         <v-icon class="el-icon-search" :color="user.chatColor" :size="18" @clickIcon="spreadInput"></v-icon>
                     </h3>
                     <input type="text" v-show="spread" ref="searchMember">
@@ -63,14 +63,14 @@
                         <li>
                             <p class="loadmore" v-if="groupUsers.length > groupUserList.length" @click="loadmore">
                                 <v-icon class="el-icon-loading" color="#fff" :size="14" v-if="loadmoreLoading"></v-icon>
-                                加载更多</p>
+                                Loading more...</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="vchat-item-container" v-show="currNav === 1">
-            努力开发中...
+<!--            努力开发中...-->
         </div>
         <div class="vchat-item-container" v-show="currNav === 2">
             <message-log :currSation="currSation" :currNav="currNav" @lookPhoto="lookPhoto"></message-log>
@@ -92,7 +92,7 @@
         data() {
             return {
                 // type 0 共有 1 群聊 2 好友
-                navList: [{name: '聊天', type: 'group,friend', id: 0}, {name: '公告', type: 'group', id: 1}, {name: '聊天记录', type: 'group,friend', id: 2}],
+                navList: [{name: 'Chatting', type: 'group,friend', id: 0}, {name: 'Information', type: 'group', id: 1}, {name: 'Chatting record', type: 'group,friend', id: 2}],
                 IMG_URL: process.env.IMG_URL,
                 currNav: 0,
                 spread: false,

@@ -31,7 +31,7 @@
                             <p>{{v.newMesTime}}</p>
                         </div>
                         <p class="delete" @click.stop="remove(v, i)">
-                            <el-tooltip class="item" effect="dark" :content="v.type === 'vchat' ? '从会话列表移除' : '从列表移除后，需要再次添加才能收到消息！'" placement="top-start">
+                            <el-tooltip class="item" effect="dark" :content="v.type === 'vchat' ? 'Remove from list' : 'Once remove from the list,you should add again '" placement="top-start">
                                 <v-icon class="el-icon-circle-close" :color="user.chatColor" cursor="pointer" :size="18"></v-icon>
                             </el-tooltip>
                         </p>
@@ -149,7 +149,7 @@
                         if (r.code === 0) {
                             this.$message({
                                 type: 'success',
-                                message: '移除成功'
+                                message: 'Remove from the list successfully'
                             });
                             this.$store.commit('setConversationsList', Object.assign({d: true}, v));
 //                            this.contactsList = this.contactsList.filter(m => m.id !== v.id);
@@ -160,7 +160,7 @@
                         } else {
                             this.$message({
                                 type: 'success',
-                                message: '移除失败'
+                                message: 'Fail to delete'
                             });
                         }
                     })

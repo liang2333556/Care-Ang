@@ -1,10 +1,10 @@
 <template>
     <div class="vchat-myFriend vchat-noUser">
-        <v-apheader title="我的好友">
+        <v-apheader title="My friends">
             <el-dropdown trigger="click" @command="handleCommand">
                 <v-icon cursor="pointer" name="hanbaobao" color="#fff"></v-icon>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item command="/main/personalMain/friendly/search">添加好友</el-dropdown-item>
+                    <el-dropdown-item command="/main/personalMain/friendly/search">Add friends</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </v-apheader>
@@ -22,7 +22,7 @@
                 <h3 @click="setShowList('mine')">
                     <p>
                         <v-icon name="fanhui" :size="16" color="#b7b6b6" class="list-icon"></v-icon>
-                        <span>我的好友</span>
+                        <span>My Friends</span>
                     </p>
                     <span>{{friendList.length}}</span>
                 </h3>
@@ -52,13 +52,13 @@
             </div>
             <v-nodata v-else>
                 <p class="vchat-no-have">
-                    还没有添加好友哦，去 <router-link to="/main/personalMain/friendly/search">添加</router-link>。
+                    You do not have friends，to <router-link to="/main/personalMain/friendly/search">add more friends</router-link>。
                     </p>
             </v-nodata>
         </div>
         <v-dropdown :command="currFriend" :x="x" :y="y" :visible="visible" @upVisible="upVisible">
             <v-dropdown-item slot-scope="{command}" @dropdownClick="handleConversitionList(command)" slot="dropdown">
-                {{addOrDel ? '从会话列表移除' : '添加到会话列表'}}
+                {{addOrDel ? 'Delete from the list' : 'Add to message list'}}
             </v-dropdown-item>
         </v-dropdown>
     </div>
@@ -133,13 +133,13 @@
                     if (r.code === 0) {
                         this.$message({
                             type: 'success',
-                            message: '添加成功'
+                            message: 'Add successfully!'
                         });
                         this.$store.commit('setConversationsList', params);
                     } else {
                         this.$message({
                             type: 'success',
-                            message: '添加失败'
+                            message: 'Fail to add'
                         });
                     }
                     this.visible = false;
@@ -153,13 +153,13 @@
                     if (r.code === 0) {
                         this.$message({
                             type: 'success',
-                            message: '移除成功'
+                            message: 'Delete successfully'
                         });
                         this.$store.commit('setConversationsList', Object.assign({}, params, {d: true}));
                     } else {
                         this.$message({
                             type: 'success',
-                            message: '移除失败'
+                            message: 'Fail to delete'
                         });
                     }
                     this.visible = false;
