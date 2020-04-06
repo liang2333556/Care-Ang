@@ -46,7 +46,7 @@
                         name: 'four',
                         title: 'Watch news',
                         src: require('../../assets/img/news-icon.png'),
-                        link: 'news'
+                        link: 'TopNews'
                     },
                     {
                         name: 'fif',

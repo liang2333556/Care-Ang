@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "vue2-animate": "^2.1.0",
     "vue-youtube": "^1.3.4",
     "vuejs-progress-bar": "^1.0.9",
     "aplayer": "^1.10.1",

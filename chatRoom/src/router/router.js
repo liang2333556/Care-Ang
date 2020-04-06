@@ -191,6 +191,23 @@ export default new Router({
                                 name: 'news'
                             }
                         },
+                      {
+                        path: 'NewsVue',
+                        name: 'NewsVue',
+                        component: _import('applicationModel/NewsVue'),
+                        meta: {
+                          title: 'NewsVue',
+                          name: 'NewsVue'
+                        }
+                      },      {
+                        path: 'TopNews',
+                        name: 'TopNews',
+                        component: _import('applicationModel/TopNews'),
+                        meta: {
+                          title: 'TopNews',
+                          name: 'TopNews'
+                        }
+                      },
                         {
                             path: 'newsDetailSub',
                             name: 'newsDetail',

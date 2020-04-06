@@ -51,6 +51,7 @@
                         link: 'searchweather'
                     },
 
+
                 ]
             };
         },

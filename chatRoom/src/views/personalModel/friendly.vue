@@ -13,8 +13,9 @@
         data() {
             return {
                 backgroundDiv: {
-                    backgroundImage: 'url(' + require('../../assets/img/b3.jpg') + ')',
+                    backgroundImage: 'url(' + require('../../assets/img/chatback.jpg') + ')',
                     backgroundRepeat: "repeat",
+
 
                 },
                 isShow: true,
