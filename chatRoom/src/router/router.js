@@ -17,6 +17,11 @@ export default new Router({
             redirect: 'main/personalMain',
             children: [
               {
+                path:'shop',
+                name:'shop',
+                component:_import('shop'),
+              },
+              {
                 path:'searchweather',
                 name:'searchweather',
                 component:_import('searchweather'),

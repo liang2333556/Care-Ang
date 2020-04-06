@@ -50,7 +50,13 @@
                         id: 3,
                         link: 'searchweather'
                     },
-
+                    {
+                        name: 'Get everything>.<',
+                        class:'icon-zhuti',
+                         activeClass: 'icon-people_fill',
+                        id: 4,
+                        link: 'shop'
+                    },
 
                 ]
             };
