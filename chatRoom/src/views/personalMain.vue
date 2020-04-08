@@ -57,15 +57,15 @@
 </script>
 <style scoped lang="scss">
   .name{
-    color:#0044BB;
+    color:	#CC6600;
 
   }
 
   .iconfont{
-    color:#0044BB;
+    color:	#CC6600;
   }
     .vchat-personalMain {
-     color:#0044BB;
+     color:	#CC6600;
       font-family:word;
         width: calc(100% - 30px);
         height: 100%;
@@ -84,7 +84,7 @@
             width:100%;
             height: 100%;
             box-sizing: border-box;
-            background-color: #CCCCFF;
+            background-color: 	#CC99CC;
             box-shadow: 0 0 1px 1px #9966FF;
         }
         .vchat-content-left-content{

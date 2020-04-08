@@ -1,5 +1,5 @@
 <template>
-    <div class="vchat-header">
+    <div class="vchat-header"  :style="background">
         <div class="vchat-main-header" v-if="isMainHeader">
             <div class="vchat-header-container">
               <div class="logo">
@@ -90,6 +90,11 @@
         },
         data() {
             return {
+                background1: {
+                    backgroundImage: 'url(' + require('../../../assets/img/detail.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
 //                hover: false,
                 draggable: true, // 允许拖拽
                 handleList: [
@@ -202,7 +207,8 @@
                 justify-content: space-between;
                 align-items: center;
                 position: relative;
-              background-image: url("../../../assets/img/b13.jpg");
+              background-image: url("../../../assets/img/b21.jpg");
+              background-repeat: repeat;
 
               z-index: 2002;
             }

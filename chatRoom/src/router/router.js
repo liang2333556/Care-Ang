@@ -4,6 +4,7 @@ import _import from './_import';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
     routes: [
         {
             path: '/',
@@ -21,6 +22,22 @@ export default new Router({
                 name:'shop',
                 component:_import('shop'),
               },
+              {
+                path: 'products',
+                name: 'Products',
+                component: _import('ProductList'),
+              },
+              {
+                path: 'products/:slug',
+                name: 'Product',
+                component: _import('ProductPage'),
+                props: true,
+              },
+              // {
+              //   path: 'Not',
+              //   name: 'Not',
+              //   component: _import('Not'),
+              // },
               {
                 path:'searchweather',
                 name:'searchweather',

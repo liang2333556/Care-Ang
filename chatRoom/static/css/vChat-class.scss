@@ -1,6 +1,7 @@
 .vchat-line1 { // 单行文字超出省略号
     overflow: hidden;
     text-overflow: ellipsis;
+  color:	#003377;
     white-space: nowrap;
 }
 .vchat-bg{
@@ -104,7 +105,7 @@
     padding: 5px 15px;
     box-sizing: border-box;
     a {
-        color: #27cac7;
+        color: 	#6A5ACD;
         cursor: pointer;
     }
 }
@@ -159,7 +160,10 @@
 }
 .vchat-linkman-list{
     li{
-        width:100%;
+       background-color:#FFC8B4;
+      opacity: 0.8;
+
+      width:100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;

@@ -113,7 +113,7 @@
   }
 
   .fondo{
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 
   }

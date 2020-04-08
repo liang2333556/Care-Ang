@@ -1,6 +1,6 @@
 <template>
     <div class="backLog">
-      <div class="compler-tab">
+      <div class="compler-tab"  :style="background3">
         <h3>
             <span>Schedule</span>
             <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="Manage schedule" @clickIcon="$router.push({name: 'todo'})"></v-icon>
@@ -28,7 +28,7 @@
             </v-nodata>
         </div>
       </div>
-      <div class="compler-tab" style="margin-left: 1.5%">
+      <div class="compler-tab"  :style="background3" style="margin-left: 1.5%">
         <h3>
           <span>Wishing wall</span>
           <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="Leave your wish here~" @clickIcon="addWishing()"></v-icon>
@@ -54,7 +54,7 @@
           </v-nodata>
         </div>
       </div>
-      <div class="compler-tab" style="margin-left: 1.5%;overflow: hidden">
+      <div class="compler-tab" :style="background3" style="margin-left: 1.5%;overflow: hidden">
         <h3>
           <span>Diary</span>
           <v-icon name="jia2" color="#ff6b6b" cursor="pointer" title="Add Diary" @clickIcon="addRecord()"></v-icon>
@@ -83,6 +83,7 @@
       </div>
       <div>
         <el-dialog class ="diary" title="Add Diary" :visible.sync="dialogRecord" width="70%"  :style="backgroundDiv">
+          <img src="../../../assets/img/diaryico.png" class="diaryico" alt="">
           <el-form ref="recordRule" :model="recordForm" style="padding: 0px 15px" >
             <el-form-item label="Title" prop="title">
               <el-input v-model="recordForm.title"></el-input>
@@ -111,8 +112,9 @@
         </el-dialog>
       </div>
 
-      <div >
+      <div>
         <el-dialog  title="Wish" :visible.sync="dialogWishing" width="70%"  :style="background1" >
+          <img src="../../../assets/img/wishico.png" class="wishico" alt="">
           <el-input type="textarea" :autosize="{ minRows: 8}" v-model="wishForm.wish"></el-input>
           <div slot="footer" class="dialog-footer">
             <el-button @click="dialogWishing = false">Chancel</el-button>
@@ -159,6 +161,11 @@
                 },
                 background2: {
                     backgroundImage: 'url(' + require('../../../assets/img/b5.jpg') + ')',
+                    backgroundRepeat: "repeat",
+
+                },
+                background3: {
+                    backgroundImage: 'url(' + require('../../../assets/img/b20.jpg') + ')',
                     backgroundRepeat: "repeat",
 
                 },
@@ -403,7 +410,7 @@
         overflow-y: auto;
         box-sizing: border-box;
       border-radius: 29px 29px 0 0;
-      background-image: url("../../../assets/img/b13.jpg");
+      /*background-image: url("../../../assets/img/b1.jpg");*/
 
       font-family:word;
 
@@ -415,24 +422,34 @@
             padding: 0 10px;
             box-sizing: border-box;
             font-weight: 400;
-            color: white;
-        border-radius: 29px 29px 0 0;
-        background: #CCCCFF;
+            color: 	#4B0082;
+        border-radius: 15px 15px 0 0;
+        background:	#CC99CC;
         font-family:word;
 
 
+      }
+      .diaryico{
+        width:50px;
+        height:50px;
+      }
+      .wishico{
+        width:50px;
+        height:50px;
       }
         .todoList{
             li{
                 text-align: left;
               margin: 8px 5px;
               font-family:word;
+             background-color:#CC9999;
+              opacity: 0.8;
 
-              background-image: url("../../../assets/img/b10.jpg");
+              /*background-image: url("../../../assets/img/detail.jpg");*/
                 padding: 5px 10px;
                 box-sizing: border-box;
                 margin-bottom: 10px;
-               coloe:white;
+               color:#4B0082;
             }
             .title{
                 font-size: 16px;
@@ -460,7 +477,7 @@
               font-family:word;
 
               .address{
-                    color: #ff714f;
+                    color: red;
                     font-style: normal;
                     display: inline-block;
                     border: 1px solid #ff714f;
@@ -484,7 +501,7 @@
                 }
             }
             li:hover{
-                background-color: #f8f8f8;
+                background-color:#FFDDAA;
             }
             li:hover span:nth-of-type(2) {
                 display: block;
@@ -498,9 +515,9 @@
         margin: 8px 5px;
         height: 60px;
         font-family:word;
+        background-color:#CC9999;
+        opacity: 0.9;
 
-        background-image: url("../../../assets/img/b10.jpg");
-       color:white;
       }
       .div-overflow{
         overflow-y:auto;

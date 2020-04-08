@@ -6,7 +6,7 @@ import router from './router';
 import 'babel-polyfill';
 import store from './store';
 import './api/fetch';
-
+import numeral from 'numeral';
 import VueLazyload from 'vue-lazyload'
 import ElementUI from 'element-ui';
 import '../static/css/element_ui.scss';
@@ -23,6 +23,8 @@ import './css/style.css'
 import * as filters from './utils/filters'
 import VueClipboard from 'vue-clipboard2'
 import VueYoutube from 'vue-youtube'
+import Share from 'vue-social-share'
+Vue.use(Share)
 Vue.use(VueYoutube)
 
 import ProgressBar from 'vuejs-progress-bar'
@@ -31,6 +33,8 @@ Vue.use(ProgressBar)
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/'
 
 Vue.config.productionTip = false
+Vue.filter('price', value => numeral(value).format('0.00'));
+
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
@@ -56,6 +60,7 @@ new Vue({
     el: '#app',
     router,
     store,
-    components: {App},
+  render: h => h(App),
+  components: {App},
     template: '<App/>'
 });
