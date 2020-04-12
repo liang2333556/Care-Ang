@@ -53,8 +53,8 @@
               <el-date-picker v-model="personForm.birthday" type="date" :value-format="formatDate" placeholder="Select the date">
               </el-date-picker>
             </el-form-item>
-            <el-form-item label="Personalized signature" prop="signature">
-                <el-input v-model="personForm.signature" placeholder="Personalized signature" type="textarea" aotusize resize="none">
+            <el-form-item label="Personal statement" prop="signature">
+                <el-input v-model="personForm.signature" placeholder="Personal statement" type="textarea" aotusize resize="none">
                 </el-input>
             </el-form-item>
         </el-form>

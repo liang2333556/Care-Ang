@@ -98,12 +98,6 @@
 //                hover: false,
                 draggable: true, // 允许拖拽
                 handleList: [
-
-                    {
-                        name: 'Schedule',
-                        icon: 'icon-huihuajilu',
-                        link: '/todo'
-                    },
                     {
                         name: 'Setting',
                         icon: 'icon-shezhi1',
@@ -200,7 +194,7 @@
             height: 80px;
             .vchat-header-container{
               font-family:word;
-               color:#9900FF;
+               color:#FFDDAA;
                 width: 100%;
                 height: 80px;
                 display: flex;

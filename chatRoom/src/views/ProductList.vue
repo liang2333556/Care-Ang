@@ -62,7 +62,7 @@ export default {
   margin-left: 30px;
   margin-top:50px;
   margin-bottom:50px;
-
+padding-top:10px;
 }
 
 .products {

@@ -22,7 +22,7 @@
             },
             bgColor: {
                 type: String,
-                default:'#CC99CC'
+                default:'#B0C4DE'
             }
         },
         data() {
@@ -55,7 +55,8 @@
         position: relative;
         height: 40px;
         span{
-            color: 		#CC6600;
+            color: 	#F5F5F5;
+          font-size: 19px;
         }
         >a:first-child{
             display: block;

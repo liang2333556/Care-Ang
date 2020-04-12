@@ -29,7 +29,7 @@
 <style lang="scss" scoped>
     .vchat-application-main{
         width:100%;
-        height: 100%;
+        height: 710px;
         padding: 10px 15px 15px;
         box-sizing: border-box;
         overflow-y: auto;

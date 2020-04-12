@@ -10,8 +10,8 @@
         </div>
         <div class="vchat-crop-btn">
             <div class="coose-pic">
-                <el-button size="small" type="primary">Select a picture</el-button>
-                <input type="file" @change="fileChange" ref="cropFile" accept="image/gif,image/jpeg,image/jpg,image/png">
+                <el-button size="small" type="primary">Select a picture <input type="file" @change="fileChange" ref="cropFile" accept="image/gif,image/jpeg,image/jpg,image/png"></el-button>
+
             </div>
             <div>
                 <el-button type="primary" @click="reset">Reset</el-button>

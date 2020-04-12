@@ -142,15 +142,7 @@ export default new Router({
                             name: 'appSpace',
                             component: _import('applicationModel/appSpace'),
                         },
-                        {
-                            path: 'jokes',
-                            name: 'Jokes',
-                            component: _import('/jokes'),
-                            meta: {
-                                title: 'Jokes',
-                                name: 'Jokes'
-                            }
-                        },
+
                       {
                         path: 'musicplay',
                         name: 'musicplay',

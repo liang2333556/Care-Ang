@@ -23,8 +23,8 @@ import './css/style.css'
 import * as filters from './utils/filters'
 import VueClipboard from 'vue-clipboard2'
 import VueYoutube from 'vue-youtube'
-import Share from 'vue-social-share'
-Vue.use(Share)
+import { vueBaberrage } from 'vue-baberrage'
+Vue.use(vueBaberrage)
 Vue.use(VueYoutube)
 
 import ProgressBar from 'vuejs-progress-bar'

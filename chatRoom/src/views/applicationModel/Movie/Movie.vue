@@ -16,11 +16,12 @@
           <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
           <span class="glyphicon glyphicon-star"></span>
           {{movieObj.vote_average}}</div>
-
+<div class="btn">
         <button type="button"
-                v-clipboard:copy="movieObj.title+movieObj.poster_path"
+                v-clipboard:copy="movieObj.title+':'+movieObj.overview"
                 v-clipboard:success="onCopy"
                 v-clipboard:error="onError">Share</button>
+</div>
       </div>
   </div>
 </template>
@@ -89,3 +90,8 @@ export default {
   }
 }
 </script>
+<style>
+  .btn{
+    color:black;
+  }
+  </style>

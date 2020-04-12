@@ -21,23 +21,27 @@
             </a>
             <div class="firend-info">
                 <p>
-                    Vchat：{{friendInfo.code}}
+                    ID：{{friendInfo.code}}
                 </p>
+              <p>
+                    Username：{{friendInfo.nickname}}
+              </p>
                 <p>
                     Gender：{{friendInfo.sex === '1' ? 'boy' : friendInfo.sex === '2' ? 'girl' : 'secret'}}
                 </p>
-<!--                <p>-->
-<!--                    Location：{{friendInfo.province.name + (friendInfo.city.name === '市辖区' ? '' : ' - ' + friendInfo.city.name) + ' - ' + friendInfo.town.name}}-->
-<!--                </p>-->
                 <p>
-                  Know each other ：{{friendTime}}days
+                  Personal statement:   {{friendInfo.signature}}
+                </p>
+                <p class="day">
+                  Become friends：{{friendTime}}days
+                  <img src="../../../assets/img/vchat.png" style="width:30px;height:30px">
                 </p>
             </div>
             <div class="detail-item" v-if="friendInfo.code === user.code" @click="toPhoto">
                 <span>Photo wall</span>
                 <p>
                     <v-icon name="enter" color="#d5d5d5"></v-icon>
-                </p>Personalized signature
+                </p>
             </div>
             <div class="detail-button" v-if="friendInfo.code !== user.code">
                 <button @click="apply" class="vchat-full-button minor" v-if="!myFriendFlag">Become friends</button>
@@ -126,4 +130,7 @@
 
 <style lang="scss" scoped>
     @import "../vchatDetail";
+  .day{
+    color:	#FF3300;
+  }
 </style>

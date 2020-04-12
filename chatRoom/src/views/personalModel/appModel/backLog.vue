@@ -68,8 +68,8 @@
                   {{v.title}}
                 </div>
                 <div style="float: right;padding: 5px 10px;cursor:pointer;" v-show="v.editFlag" >
-                  <span v-on:mouseover="addActive1(i,1)" v-on:mouseout="addActive1(i,2)" v-bind:class="{ editItem1: v.editItem==1,editItem2: v.editItem!=1}" @click="editRecord(v)">编辑</span>
-                  <span v-on:mouseover="addActive2(i,1)" v-on:mouseout="addActive2(i,2)" v-bind:class="{ delItem1: v.delItem==1,delItem2: v.delItem!=1}" @click="delRecord(v)">删除</span>
+                  <span v-on:mouseover="addActive1(i,1)" v-on:mouseout="addActive1(i,2)" v-bind:class="{ editItem1: v.editItem==1,editItem2: v.editItem!=1}" @click="editRecord(v)">Edit</span>
+                  <span v-on:mouseover="addActive2(i,1)" v-on:mouseout="addActive2(i,2)" v-bind:class="{ delItem1: v.delItem==1,delItem2: v.delItem!=1}" @click="delRecord(v)">Delete</span>
                 </div>
               </div>
             </li>
@@ -392,12 +392,12 @@
 <style lang="scss" scoped>
 
     .compler-tab{
+   padding-bottom:10px;
       float: left;
       vertical-align: top;
       width: 32%;
-      height: 100%;
+      height: 800px;
       border-left: 1px solid white;
-      border-bottom: 1px solid white;
       border-right: 1px solid white;
       border-radius: 29px 29px 0 0;
       font-family:word;
@@ -405,8 +405,9 @@
 
     }
     .backLog{
+
         width: 100%;
-        height: calc(100% - 250px);
+        height: 425px;
         overflow-y: auto;
         box-sizing: border-box;
       border-radius: 29px 29px 0 0;
@@ -415,16 +416,18 @@
       font-family:word;
 
       h3{
-            display: flex;
+        text-align:center;
+
+        display: flex;
             justify-content: space-between;
             line-height: 36px;
             border-bottom: 1px solid #d5d5d5;
             padding: 0 10px;
             box-sizing: border-box;
             font-weight: 400;
-            color: 	#4B0082;
+            color: 	#696969;
         border-radius: 15px 15px 0 0;
-        background:	#CC99CC;
+        background:	#EED5D2;
         font-family:word;
 
 
@@ -442,7 +445,7 @@
                 text-align: left;
               margin: 8px 5px;
               font-family:word;
-             background-color:#CC9999;
+             background-color:#FFC8B4;
               opacity: 0.8;
 
               /*background-image: url("../../../assets/img/detail.jpg");*/
@@ -453,7 +456,7 @@
             }
             .title{
                 font-size: 16px;
-                color: white;
+                color: #696969;
                 margin-bottom: 5px;
                 border-left: 3px solid #28828f;
                 padding-left: 5px;
@@ -462,14 +465,14 @@
             }
             .content{
                 font-size: 14px;
-                color: white;
+                color: #444444;
                 margin-bottom: 5px;
               font-family:word;
 
             }
             .info{
                 font-size: 12px;
-                color: white;
+                color: black;
                 font-family: "Times New Roman", Times, serif;
                 display: flex;
                 justify-content: space-between;
@@ -501,7 +504,7 @@
                 }
             }
             li:hover{
-                background-color:#FFDDAA;
+                background-color:#B0C4DE;
             }
             li:hover span:nth-of-type(2) {
                 display: block;
@@ -515,8 +518,8 @@
         margin: 8px 5px;
         height: 60px;
         font-family:word;
-        background-color:#CC9999;
-        opacity: 0.9;
+        background-color:#FFC8B4;
+        opacity: 0.8;
 
       }
       .div-overflow{

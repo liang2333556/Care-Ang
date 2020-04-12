@@ -109,7 +109,7 @@
   }
 
   .weather-card {
-    background-color: 	#6A5ACD;
+    background-color: 	#CC99CC;
     border-radius: 3px;
     box-shadow: 0px 0px 150px 0px rgba(0,0,0,0.5);
     color: #383842;

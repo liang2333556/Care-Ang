@@ -15,16 +15,21 @@
           @placechanged="getInputQuery">
         </VueGoogleAutocomplete>
         <button class="clear-button button" title="Clear search" type="button" @click.prevent="clearInputQuery">
+          <img src='../assets/img/clear.svg' style="width:20px;height:20px ">
+
           <IconClear class="icon"></IconClear>
         </button>
       </div>
     </div>
 
     <button class="search-button button" title="Search" @click.prevent="getInputQuery">
+      <img src='../assets/img/search.svg' style="width:20px;height:20px ">
+
       <IconSearch class="icon"></IconSearch>
     </button>
-
     <button class="location-button button" title="Find your location" @click.prevent="findLocation">
+      <img src='../assets/img/my_location.svg' style="width:20px;height:20px ">
+
       <IconLocationSearch v-if="store.locationIcon === 'search'"></IconLocationSearch>
       <IconLocationLock v-else-if="store.locationIcon === 'lock'"></IconLocationLock>
       <IconLocationDisabled v-else-if="store.locationIcon === 'disabled'"></IconLocationDisabled>
@@ -35,11 +40,11 @@
 <script>
   // eslint-disable-next-line no-unused-vars
   import arrive from 'arrive'
-  import IconLocationDisabled from '../assets/icons/ui/location_disabled.svg'
-  import IconLocationSearch from '../assets/icons/ui/location_searching.svg'
-  import IconLocationLock from '../assets/icons/ui/my_location.svg'
-  import IconSearch from '../assets/icons/ui/search.svg'
-  import IconClear from '../assets/icons/ui/clear.svg'
+  import IconLocationDisabled from '../assets/img/location_disabled.svg'
+  import IconLocationSearch from '../assets/img/location_searching.svg'
+  import IconLocationLock from '../assets/img/my_location.svg'
+  import IconSearch from '../assets/img/search.svg'
+  import IconClear from '../assets/img/clear.svg'
   import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
   export default {

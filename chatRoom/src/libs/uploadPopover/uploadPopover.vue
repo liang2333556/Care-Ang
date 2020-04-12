@@ -15,9 +15,9 @@
                         :before-upload="beforeUpload"
                         name="f"
                         :auto-upload="false">
-                    <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-                    <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">传输</el-button>
-                    <div slot="tip" class="el-upload__tip">文件大小不超过2M</div>
+                    <el-button slot="trigger" size="small" type="primary">Select file</el-button>
+                    <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">Uploading</el-button>
+                    <div slot="tip" class="el-upload__tip">The size of file can not beyond 2M</div>
                 </el-upload>
                 <span slot="reference">
                     <slot></slot>

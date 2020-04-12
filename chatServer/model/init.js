@@ -7,7 +7,7 @@ let users = db.model("users",{ // 用户
     pass: String,
     code: {type: String, unique: true}, // 唯一的code
     photo: {type: String, default: '/img/picture.png'}, // 默认头像
-    signature: { type: String, default: '这个人很懒，暂时没有签名哦！' },
+    signature: { type: String, default: 'There is nothing...' },
     nickname: { type: String, default: 'vChat-' + Date.now()},
     email: { type: String, default: '' },
     phone: { type: String, default: '' },
@@ -70,11 +70,11 @@ const initEmoji = (filePath, objs) => {
 
 const initUser = (callback) => {
     let user = new users({
-        name: 'Vchat',
+        name: 'Care',
         pass: '111111',
         photo: '/img/vchat.png',
-        signature: 'Vchat团队',
-        nickname: 'Vchat官方推送',
+        signature: 'Care team',
+        nickname: 'Care team',
         code: 666666
     });
     user.save().then((res) => {

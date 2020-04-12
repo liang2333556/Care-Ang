@@ -147,7 +147,7 @@
         background-color: #fff;
         .vchat-content-nav {
             width: 120px;
-            height: 100%;
+            height: 720px;
             ul {
                 width: 100%;
                 li {

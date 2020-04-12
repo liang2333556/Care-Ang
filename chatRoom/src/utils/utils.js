@@ -13,7 +13,7 @@ const formatDate = date => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const a = [year, month, day].map(formatNumber);
-    return a[0] + '年' + a[1] + '月' + a[2] + '日';
+    return a[0] + '.' + a[1] + '.' + a[2] + '';
 };
 
 const formatNumber = n => {

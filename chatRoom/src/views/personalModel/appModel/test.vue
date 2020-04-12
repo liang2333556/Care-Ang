@@ -1,7 +1,8 @@
 <template>
   <div class="hero">
-<div class="p3">
-    <img src="../assets/img/p3.png" height="250" width="250"/>
+    <!--    <p class="lead">This is the homepage of your <b>MEVN</b> Web app</p>-->
+<div class="p1">
+    <img src="../../../assets/img/p2.png" height="250" width="250" />
 </div>
   <div class="window" @mouseover="stop" @mouseleave="play">
       <ul class="container" :style="containerStyle">
@@ -31,10 +32,9 @@
         </li>
       </ul>
     </div>
-<div class="p4">
-    <img src="../assets/img/p4.png" height="250" width="250"/>
-</div>
-</div>
+    <div  class="p2">
+      <img src="../../../assets/img/p.png" height="250" width="250"/></div>
+  </div>
 </template>
 <script>
     /* eslint-disable */
@@ -149,15 +149,14 @@
 
   #app1 {
     width: 100%;
-    margin: 0 auto;
   }
-  .p3{
+  .p1{
     padding:20px;
     width: 25%;
 
     float:left;
   }
-  .p4{
+  .p2{
     float:left;
     padding:20px;
     width: 25%;
@@ -165,7 +164,7 @@
   }
   .hero{
     margin:0px auto;
-    width: 80%;
+    width: 100%;
     height: 250px;
   }
   .vue-title {
@@ -208,7 +207,6 @@
   }
   .left{
     left:3%;
-    padding-left:12px;
     padding-top:10px;
   }
   .right{

@@ -35,6 +35,7 @@
     "vchat-regcode": "^0.0.3",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.0",
+    "vue-baberrage": "^3.2.4",
     "vue-clipboard2": "^0.3.1",
     "vue-country-region-select": "^2.0.13",
     "vue-draggable-resizable": "^1.7.2",

@@ -48,12 +48,7 @@
                         src: require('../../assets/img/news-icon.png'),
                         link: 'TopNews'
                     },
-                    {
-                        name: 'fif',
-                        title: 'Jokes',
-                        src: require('../../assets/img/duanzi-icon.png'),
-                        link: 'jokes'
-                    }
+
                 ]
             }
         },

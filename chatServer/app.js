@@ -176,7 +176,7 @@ const onconnection = (socket) => {
                     // 通知申请人验证已同意
                     let value = {
                         name: '',
-                        mes: val.userYname + '同意你加入' + val.groupName + '!',
+                        mes: val.userYname + 'Agree you join the' + val.groupName + 'group !',
                         time: utils.formatTime(new Date()),
                         avatar: val.userYphoto,
                         nickname: val.userYname,
@@ -221,7 +221,7 @@ const onconnection = (socket) => {
                     // 通知申请人验证已同意
                     let value = {
                         name: '',
-                        mes: val.userYname + '同意了你的好友请求！',
+                        mes: val.userYname + 'agree your request!',
                         time: utils.formatTime(new Date()),
                         avatar: val.userYphoto,
                         nickname: val.userYname,

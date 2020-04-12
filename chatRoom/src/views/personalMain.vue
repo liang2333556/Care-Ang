@@ -57,25 +57,25 @@
 </script>
 <style scoped lang="scss">
   .name{
-    color:	#CC6600;
+    color:		#696969;
 
   }
 
   .iconfont{
-    color:	#CC6600;
+    color:	#696969;
   }
     .vchat-personalMain {
-     color:	#CC6600;
+      background-color:#EED5D2;
+     color:black;
       font-family:word;
-        width: calc(100% - 30px);
-        height: 100%;
+        width: 100%;
+        height: 720px;
         display: flex;
         justify-content: flex-start;
     }
     .vchat-content-left-view {
-
         width: 320px;
-        height: 100%;
+        height: 740px;
         padding: 20px 0 30px;
         box-sizing: border-box;
         margin-left: 20px;
@@ -84,7 +84,7 @@
             width:100%;
             height: 100%;
             box-sizing: border-box;
-            background-color: 	#CC99CC;
+            background-color: #B0C4DE;
             box-shadow: 0 0 1px 1px #9966FF;
         }
         .vchat-content-left-content{
@@ -117,7 +117,6 @@
         padding: 20px 0 30px;
         min-width: 820px;
         height: 100%;
-        background-color: #fff;
         box-sizing: border-box;
         margin-left: 30px;
     }

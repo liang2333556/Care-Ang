@@ -179,7 +179,7 @@
                           var date2 = new Date(info.birthday)
                           var frindsDate = date2.getMonth() +'-'+ date2.getDate()
                           if (nowDate === frindsDate) {
-                            info.birthdayRemind = '[ 好友生日 ]'
+                            info.birthdayRemind = 'Birthday Remind'
                           }
                         }
                       })
